@@ -369,9 +369,25 @@ select {
 /* Forms */
 .form {
     width: 100%;
-    max-width: 330px;
     margin: auto;
     margin-top: 15px;
+}
+
+.form-sm {
+    max-width: 330px;
+}
+
+.form-md {
+    max-width: 500px;
+}
+
+.form-group {
+    margin: 10px 0px;
+}
+
+.form-group > label {
+    font-size: 1.5rem;
+    margin: 5px 0px;
 }
 
 .form > h3 {
@@ -388,6 +404,16 @@ select {
     color: #333333;
     font-size: 16px;
     height: 46px;
+    margin-bottom: 5px;
+    padding: 13px 12px;
+    width: 100%;
+}
+
+.form textarea {
+    border-radius: 3px;
+    border: none;
+    color: #333333;
+    font-size: 16px;
     margin-bottom: 5px;
     padding: 13px 12px;
     width: 100%;
