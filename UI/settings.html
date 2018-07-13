@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MyDiary | All Diaries</title>
+    <title>MyDiary | Archive</title>
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,7 +28,7 @@
             </div>
             <!-- NAVIGATION -->
             <nav class="navbar-grid-equal">
-                <a href="notification.html" class="notify pointer">
+                <a href="#" class="notify pointer">
                     <i class="far fa-bell fa-lg notify"></i> <span class="notify-count notify-available">9</span>
                 </a> 
             </nav>
@@ -41,10 +41,10 @@
                     </span>
                 </div>
                 <div class="divider"></div>
-                <div class="profile-avatar">
+                <a href="settings.html" class="profile-avatar">
                     <img src="image/vic.jpg" class="img-circle" alt="profile picture">
                     <span>Onwuzor Victor</span>
-                </div>
+                </a>
                 <div class="divider"></div>
                 <a href="new.html">
                     <i class="fa fa-plus fa-lg"></i>
@@ -59,15 +59,7 @@
                     <i class="fa fa-archive fa-lg"></i>
                     Archive
                 </a>
-                <a href="total.html">
-                    <i class="fa fa-chart-line fa-lg"></i>
-                    Total Diaries
-                </a>
                 <div class="divider"></div>
-                <a href="notification.html">
-                        <i class="fa fa-bell fa-lg"></i>
-                        Notifications
-                </a>
                 <a href="settings.html">
                     <i class="fa fa-cog fa-lg"></i>
                     Setting
@@ -75,8 +67,7 @@
                 <a href="index.html">
                     <i class="fa fa-sign-out-alt fa-lg"></i>
                     Logout
-                </a>
-                
+                </a> 
             </nav>
         </div>
     </header>
@@ -84,9 +75,27 @@
     <!-- MAIN CONTENT -->
     <section id="main" class="container-sm single-page">
         <div>
-            <h2>General Settings</h2>
+            <h4>User Profile</h4>
             <div class="divider"></div>
-            <div class="reminder">
+            <div class="list">
+                <p>First Name</p>
+                <p>Victor</p>
+            </div>
+            <div class="list">
+                <p>Last Name</p>
+                <p>Onwuzor</p>
+            </div>
+            <div class="list">
+                <p>Username</p>
+                <p>-----</p>
+            </div>
+            <div class="list">
+                <p>Email Address</p>
+                <p>onwuzorvictor@outlook.com</p>
+            </div>
+            <h4>General Settings</h4>
+            <div class="divider"></div>
+            <div class="list">
                 <p>Set Reminder</p>
                 <input type="checkbox" name="reminder" id="reminder">
             </div>

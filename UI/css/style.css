@@ -481,14 +481,12 @@ select {
     background-color: #ffffff;
 }
 
-.reminder {
+.list {
     display: flex;
-    margin-top: 40px;
-    font-size: 1.2rem;
     justify-content: space-between;
     align-items: center; 
 }
 
-.reminder input[type="checkbox"] {
+.list input[type="checkbox"] {
     margin:20px;
 }
