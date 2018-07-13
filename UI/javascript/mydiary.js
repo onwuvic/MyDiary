@@ -1,12 +1,14 @@
 const close = document.getElementById('close-menu');
 const open = document.getElementById('open-menu');
+const sideMenu = document.getElementById('side-menu');
+const main = document.getElementById('main');
 
 open.onclick = () => {
-    document.getElementById('side-menu').style.width = '250px';
-    document.getElementById('main').style.marginLeft = '250px';
+    sideMenu.style.width = '250px';
+    main.style.marginLeft = '250px';
 }
 
 close.onclick = () => {
-    document.getElementById('side-menu').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
+    sideMenu.style.cssText = "";
+    main.style.cssText = "";    
 }
