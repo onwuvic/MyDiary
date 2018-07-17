@@ -1,0 +1,21 @@
+{
+  "name": "my-diary",
+  "version": "1.0.0",
+  "description": "Resful API for my-diary application",
+  "main": "server.js",
+  "scripts": {
+    "start": "application start now"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "api",
+    "js"
+  ],
+  "author": "Onwuzor Victor",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
