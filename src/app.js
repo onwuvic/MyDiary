@@ -7,7 +7,7 @@ import indexRouter from './api/routes/index';
 const app = express();
 
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
