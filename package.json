@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "babel-node": "babel-node --presets=env",
-    "start": "nodemon --exec npm run babel-node src/server.js"
+    "start": "nodemon --exec npm run babel-node src/server.js",
+    "lint": "esw src --color",
+    "lint:fix": "esw src/api/routes/index.js --fix",
+    "lint:watch": "npm run lint -- --watch"
   },
   "keywords": [
     "express",
@@ -27,6 +30,10 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-watch": "^4.0.0"
   }
 }
