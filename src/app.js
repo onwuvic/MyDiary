@@ -11,6 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.use('/', indexRouter);
+app.use('/api/v1', indexRouter);
 
 export default app;
