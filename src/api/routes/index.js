@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAll, createOne, getOne } from './../contollers/EntryController';
+import { getAll, createOne, getOne, updateOne } from './../contollers/EntryController';
 
 const router = express.Router();
 
@@ -17,6 +17,7 @@ router.get('/entries/:id', getOne);
 // CREATE NEW ENTRY
 router.post('/entries', createOne);
 
-
+// UPDATE ONE ENTRY
+router.put('/entries/:id', updateOne);
 
 export default router;
