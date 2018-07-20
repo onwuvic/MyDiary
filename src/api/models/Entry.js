@@ -52,6 +52,22 @@ const Entry = {
     });
   },
 
+  findByIdAndUpdate(id, update_entry) {
+    return new Promise((resolve, reject) => {
+      let entry = this.findEntry(id);
+      entry.id = id;
+      entry.title = update_entry.title;
+      entry.body = update_entry.body;
+      entry.feature_image = update_entry.feature_image;
+      entry.status = 1;
+      if(entry) {
+        resolve(entry);
+      } else {
+        reject(Error('server Error'));
+      }
+    });
+  },
+
   // method find entry in the entries array by id and return its value
   findEntry(id) {
     return entries.find(entry => entry.id == id);
