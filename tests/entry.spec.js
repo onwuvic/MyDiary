@@ -2,11 +2,10 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import uniqid from 'uniqid';
 import app from '../src/app';
+import Entry from './../src/api/models/Entry';
 
 chai.use(chaiHttp);
 let baseUrl = '/api/v1';
-let id = uniqid();
-let newEntry = {id: id, title: 'play of all', body: 'He plays all time', feature_image: 'http://image.jpg', status: 1};
 
 describe("Entry", () => {
   describe("entries endpoints", () => {
@@ -27,6 +26,8 @@ describe("Entry", () => {
     });
 
     describe("POST /entries", () => {
+      const id = uniqid();
+      const newEntry = {id: id, title: 'play of all', body: 'He plays all time', feature_image: 'http://image.jpg', status: 1};
       it("should CREATE a new entry", (done) => {
         chai.request(app)
           .post(`${baseUrl}/entries`)
@@ -42,6 +43,29 @@ describe("Entry", () => {
             expect(res.body).to.have.property('status').eql(1);
             done();
           });
+      });
+    });
+
+    describe("GET /entries/:id", () => {
+      const id = uniqid();
+      const newEntry = {id: id, title: 'play of all', body: 'He plays all time', feature_image: 'http://image.jpg', status: 1};
+      it("should GET only ONE entry by id", (done) => {
+        Entry.create(newEntry)
+        .then(entry => {
+          chai.request(app)
+          .get(`${baseUrl}/entries/${entry.id}`)
+          .end((error, res) => {
+            if(error) done(error);
+
+            expect(res.body).to.have.property('title').eql(entry.title);
+            expect(res.body).to.have.property('body').eql(entry.body);
+            expect(res.body).to.have.property('feature_image').eql('http://image.jpg');
+            expect(res.body).to.have.property('status').eql(1);
+            expect(res.body).to.have.property('id').eql(entry.id);
+            done();
+          });
+        });
+
       });
     });
 

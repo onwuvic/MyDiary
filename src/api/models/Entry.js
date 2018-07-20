@@ -41,6 +41,17 @@ const Entry = {
     });
   },
 
+  findOne(id) {
+    return new Promise((resolve, reject) => {
+      const entry = this.findEntry(id);
+      if(entry) {
+        resolve(entry);
+      } else {
+        reject(Error('No Entry Was Found'));
+      }
+    });
+  },
+
   // method find entry in the entries array by id and return its value
   findEntry(id) {
     return entries.find(entry => entry.id == id);
