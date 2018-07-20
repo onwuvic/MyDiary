@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/onwuvic/MyDiary.svg?branch=develop)](https://travis-ci.org/onwuvic/MyDiary) [![Coverage Status](https://coveralls.io/repos/github/onwuvic/MyDiary/badge.svg?branch=develop)](https://coveralls.io/github/onwuvic/MyDiary?branch=develop)
+[![Build Status](https://travis-ci.org/onwuvic/MyDiary.svg?branch=develop)](https://travis-ci.org/onwuvic/MyDiary) [![Coverage Status](https://coveralls.io/repos/github/onwuvic/MyDiary/badge.svg?branch=develop)](https://coveralls.io/github/onwuvic/MyDiary?branch=develop) [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/onwuvic/MyDiary)
 
 # MyDiary
 
