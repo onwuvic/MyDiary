@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAll } from './../contollers/EntryController';
+import { getAll, createOne } from './../contollers/EntryController';
 
 const router = express.Router();
 
@@ -10,6 +10,9 @@ router.get('/', (req, res) => {
 
 // GET ALL ENTRIES
 router.get('/entries', getAll);
+
+// CREATE NEW ENTRY
+router.post('/entries', createOne);
 
 
 export default router;
