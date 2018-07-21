@@ -5,7 +5,11 @@
   "main": "server.js",
   "scripts": {
     "babel-node": "babel-node --presets=env",
-    "start": "nodemon --exec npm run babel-node src/server.js",
+    "dev": "nodemon --exec npm run babel-node src/server.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js",
     "lint": "esw src tests --color",
     "lint:fix": "esw src tests --fix",
     "lint:watch": "npm run lint -- --watch",
