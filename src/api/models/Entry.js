@@ -1,13 +1,13 @@
-import entries from './../../datastore';
 import uniqid from 'uniqid';
-//Status 0: trash, 1: active, 2: archive
+import entries from '../../datastore';
+// Status 0: trash, 1: active, 2: archive
 
 const Entry = {
   findAll() {
     return new Promise((resolve, reject) => {
       // get all the entries in datastore
       const entry = entries;
-      if(entry) {
+      if (entry) {
         resolve(entry);
       } else {
         reject(Error('Server Error'));
@@ -31,9 +31,9 @@ const Entry = {
       // push the new entry to our datastore "entries"
       entries.push(newEntry);
 
-      //find the newly created entry with its id
+      // find the newly created entry with its id
       const createdEntry = this.findEntry(id);
-      if(createdEntry) {
+      if (createdEntry) {
         resolve(createdEntry);
       } else {
         reject(Error('Server Error'));
@@ -44,7 +44,7 @@ const Entry = {
   findOne(id) {
     return new Promise((resolve, reject) => {
       const entry = this.findEntry(id);
-      if(entry) {
+      if (entry) {
         resolve(entry);
       } else {
         reject(Error('No Entry Was Found'));
@@ -52,15 +52,15 @@ const Entry = {
     });
   },
 
-  findByIdAndUpdate(id, update_entry) {
+  findByIdAndUpdate(id, updateEntry) {
     return new Promise((resolve, reject) => {
-      let entry = this.findEntry(id);
+      const entry = this.findEntry(id);
       entry.id = id;
-      entry.title = update_entry.title;
-      entry.body = update_entry.body;
-      entry.feature_image = update_entry.feature_image;
+      entry.title = updateEntry.title;
+      entry.body = updateEntry.body;
+      entry.feature_image = updateEntry.feature_image;
       entry.status = 1;
-      if(entry) {
+      if (entry) {
         resolve(entry);
       } else {
         reject(Error('server Error'));
@@ -70,8 +70,8 @@ const Entry = {
 
   // method find entry in the entries array by id and return its value
   findEntry(id) {
-    return entries.find(entry => entry.id == id);
+    return entries.find(entry => entry.id === id);
   }
-}
+};
 
 export default Entry;

@@ -1,5 +1,7 @@
 import express from 'express';
-import { getAll, createOne, getOne, updateOne } from './../contollers/EntryController';
+import {
+  getAll, createOne, getOne, updateOne
+} from '../contollers/EntryController';
 
 const router = express.Router();
 

@@ -6,8 +6,8 @@
   "scripts": {
     "babel-node": "babel-node --presets=env",
     "start": "nodemon --exec npm run babel-node src/server.js",
-    "lint": "esw src --color",
-    "lint:fix": "esw src --fix",
+    "lint": "esw src tests --color",
+    "lint:fix": "esw src tests --fix",
     "lint:watch": "npm run lint -- --watch",
     "test": "cross-env NODE_ENV=test nyc mocha --timeout 10000 \"tests/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
