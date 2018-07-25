@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyDiary | New Diary</title>
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container container-fluid navbar-grid">
+            <!-- SIDE MENU ICON -->
+            <div class="dropdown-menu">
+                <span id="open-menu" class="pointer">
+                    <svg width="30" height="30">
+                        <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                        <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                        <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+                    </svg>
+                </span>
+            </div>
+            <!-- BRAND NAME -->
+            <div class="navbar-brand">
+                <a href="diaries.html" class="h2">MyDiary</a>
+            </div>
+            <!-- NAVIGATION -->
+            <nav class="navbar-grid-equal">
+                <a href="index.html">
+                    <i class="fa fa-sign-out-alt fa-lg"></i>
+                    Logout
+                </a> 
+            </nav>
+            <!-- SIDE-BAR MENU -->
+            <nav class="side-navbar" id="side-menu">
+                <div class="navbar-brand navbar-grid-menu">
+                    <h2>MyDiary</h2>
+                    <span class="btn-close pointer" id="close-menu">
+                        &times;
+                    </span>
+                </div>
+                <div class="divider"></div>
+                <a href="settings.html" class="profile-avatar">
+                    <img src="image/vic.jpg" class="img-circle" alt="profile picture">
+                    <span>Onwuzor Victor</span>
+                </a>
+                <div class="divider"></div>
+                <a href="new.html">
+                    <i class="fa fa-plus fa-lg"></i>
+                    Create New Diary
+                </a>
+                <a href="diaries.html">
+                    <i class="fa fa-atlas fa-lg"></i>
+                    All Diaries
+                </a>
+                <div class="divider"></div>
+                <a href="notification.html">
+                    <i class="fa fa-bell fa-lg"></i>
+                    <span class="notify-count notify-available">9</span>
+                    Notifications
+                </a>
+                <a href="settings.html">
+                    <i class="fa fa-cog fa-lg"></i>
+                    Settings
+                </a> 
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <section id="main" class="container">
+        <form class="form form-md">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="body">Dear Diary</label>
+                <textarea rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="feature_image">Feature Image</label><br>
+                <input type="file" name="feature_image" id="feature_image">
+            </div>
+            
+            <button class="btn btn-info">Save</button>
+        </form>
+    </section>
+    
+    <footer class="footer">
+        <p>MyDiary &copy; 2018.</p>
+    </footer>
+
+    <script src="javascript/mydiary.js"></script>
+</body>
+</html>
