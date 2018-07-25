@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MyDiary | Trash</title>
+    <title>MyDiary | New Diary</title>
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,8 +28,9 @@
             </div>
             <!-- NAVIGATION -->
             <nav class="navbar-grid-equal">
-                <a href="#" class="notify pointer">
-                    <i class="far fa-bell fa-lg notify"></i> <span class="notify-count notify-available">9</span>
+                <a href="index.html">
+                    <i class="fa fa-sign-out-alt fa-lg"></i>
+                    Logout
                 </a> 
             </nav>
             <!-- SIDE-BAR MENU -->
@@ -55,68 +56,58 @@
                     All Diaries
                 </a>
                 <div class="divider"></div>
-                <a href="trash.html">
-                    <i class="fa fa-trash fa-lg"></i>
-                    Trash
+                <a href="notification.html">
+                    <i class="fa fa-bell fa-lg"></i>
+                    <span class="notify-count notify-available">9</span>
+                    Notifications
                 </a>
-                <a href="archive.html">
-                    <i class="fa fa-archive fa-lg"></i>
-                    Archive
-                </a>
-                <div class="divider"></div>
                 <a href="settings.html">
                     <i class="fa fa-cog fa-lg"></i>
-                    Setting
-                </a>
-                <a href="index.html">
-                    <i class="fa fa-sign-out-alt fa-lg"></i>
-                    Logout
+                    Settings
                 </a> 
             </nav>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <section id="main" class="container grid-layout">
-        <article class="card">
-            <img class="card-img" src="image/four.jpg" alt="">
-            <div class="card-body">
-                <h5 class="card-title">My Time Management Crisis</h5>
-                <p><small class="card-date">Created 4 July 2018</small></p>
-                <p>It's been two weeks now, after so much consumption of time management books and online resources only to find out I'm way worse than before. It all started like...</p>
-                
+    <section id="main" class="container-sm single-page">
+        <div>
+            <div>
+                <small class="card-date">4 July 2018</small>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi sapiente eveniet 
+                    obcaecati ipsa eos expedita quod fuga quis totam tempore nesciunt ducimus, 
+                    quibusdam nemo esse dolore necessitatibus fugiat mollitia? Esse?
+                </p>
             </div>
-            <div class="card-footer">
-                <a href="archive.html">
-                    <i class="fa fa-retweet"></i>
-                    Restore
-                </a>
-                <a href="trash.html">
-                    <i class="fa fa-trash-alt"></i>
-                    Delete
-                </a>  
+            
+            <div class="divider"></div>
+            <div>
+                <small class="card-date">5 July 2018</small>
+                <p>Hi Victor, 
+                    Don't forget to pen your thought down today. 
+                    Keeping a journal is great for your mental health.
+                </p>
             </div>
-        </article>
-        <article class="card">
-            <div class="card-body">
-                <h5 class="card-title">I Went Blank</h5>
-                <p><small class="card-date">Created 5 July 2018</small></p>
-                <p>Few days to this my famous speech. Having prepared such much not because I wanted to impressed the whole school or because I want to inspire the student. I did it because I wanted to impress her. We met when...</p>
-                
+            <div class="divider"></div>
+            <div>
+                <small class="card-date">6 July 2018</small>
+                <p>Hi Victor, 
+                        Don't forget to pen your thought down today. 
+                        Keeping a journal is great for your mental health.
+                </p>
             </div>
-            <div class="card-footer">
-                <a href="archive.html">
-                    <i class="fa fa-retweet"></i>
-                    Restore
-                </a>
-                <a href="trash.html">
-                    <i class="fa fa-trash-alt"></i>
-                    Delete
-                </a>
+            <div class="divider"></div>
+            <div>
+                <small class="card-date">7 July 2018</small>
+                <p>Hi Victor, 
+                        Don't forget to pen your thought down today. 
+                        Keeping a journal is great for your mental health.
+                </p>
             </div>
-        </article>
-
+            <div class="divider"></div>
+        </div>
     </section>
+    
     <footer class="footer">
         <p>MyDiary &copy; 2018.</p>
     </footer>

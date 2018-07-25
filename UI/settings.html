@@ -11,74 +11,79 @@
 <body>
     <!-- HEADER -->
     <header>
-        <div class="container container-fluid navbar-grid">
-            <!-- SIDE MENU ICON -->
-            <div class="dropdown-menu">
-                <span id="open-menu" class="pointer">
-                    <svg width="30" height="30">
-                        <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
-                        <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
-                        <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
-                    </svg>
-                </span>
-            </div>
-            <!-- BRAND NAME -->
-            <div class="navbar-brand">
-                <a href="diaries.html" class="h2">MyDiary</a>
-            </div>
-            <!-- NAVIGATION -->
-            <nav class="navbar-grid-equal">
-                <a href="#" class="notify pointer">
-                    <i class="far fa-bell fa-lg notify"></i> <span class="notify-count notify-available">9</span>
-                </a> 
-            </nav>
-            <!-- SIDE-BAR MENU -->
-            <nav class="side-navbar" id="side-menu">
-                <div class="navbar-brand navbar-grid-menu">
-                    <h2>MyDiary</h2>
-                    <span class="btn-close pointer" id="close-menu">
-                        &times;
-                    </span>
-                </div>
-                <div class="divider"></div>
-                <a href="settings.html" class="profile-avatar">
-                    <img src="image/vic.jpg" class="img-circle" alt="profile picture">
-                    <span>Onwuzor Victor</span>
-                </a>
-                <div class="divider"></div>
-                <a href="new.html">
-                    <i class="fa fa-plus fa-lg"></i>
-                    Create New Diary
-                </a>
-                <a href="diaries.html">
-                    <i class="fa fa-atlas fa-lg"></i>
-                    All Diaries
-                </a>
-                <div class="divider"></div>
-                <a href="trash.html">
-                    <i class="fa fa-trash fa-lg"></i>
-                    Trash
-                </a>
-                <a href="archive.html">
-                    <i class="fa fa-archive fa-lg"></i>
-                    Archive
-                </a>
-                <div class="divider"></div>
-                <a href="settings.html">
-                    <i class="fa fa-cog fa-lg"></i>
-                    Setting
-                </a>
-                <a href="index.html">
-                    <i class="fa fa-sign-out-alt fa-lg"></i>
-                    Logout
-                </a> 
-            </nav>
-        </div>
+      <div class="container container-fluid navbar-grid">
+          <!-- SIDE MENU ICON -->
+          <div class="dropdown-menu">
+              <span id="open-menu" class="pointer">
+                  <svg width="30" height="30">
+                      <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                      <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                      <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+                  </svg>
+              </span>
+          </div>
+          <!-- BRAND NAME -->
+          <div class="navbar-brand">
+              <a href="diaries.html" class="h2">MyDiary</a>
+          </div>
+          <!-- NAVIGATION -->
+          <nav class="navbar-grid-equal">
+              <a href="index.html">
+                  <i class="fa fa-sign-out-alt fa-lg"></i>
+                  Logout
+              </a>
+          </nav>
+          <!-- SIDE-BAR MENU -->
+          <nav class="side-navbar" id="side-menu">
+              <div class="navbar-brand navbar-grid-menu">
+                  <h2>MyDiary</h2>
+                  <span class="btn-close pointer" id="close-menu">
+                      &times;
+                  </span>
+              </div>
+              <div class="divider"></div>
+              <a href="settings.html" class="profile-avatar">
+                  <img src="image/vic.jpg" class="img-circle" alt="profile picture">
+                  <span>Onwuzor Victor</span>
+              </a>
+              <div class="divider"></div>
+              <a href="new.html">
+                  <i class="fa fa-plus fa-lg"></i>
+                  Create New Diary
+              </a>
+              <a href="diaries.html">
+                  <i class="fa fa-atlas fa-lg"></i>
+                  All Diaries
+              </a>
+              <div class="divider"></div>
+              <a href="notification.html">
+                  <i class="fa fa-bell fa-lg"></i>
+                  <span class="notify-count notify-available">9</span>
+                  Notifications
+              </a>
+              <a href="settings.html">
+                  <i class="fa fa-cog fa-lg"></i>
+                  Settings
+              </a>
+          </nav>
+      </div>
     </header>
 
     <!-- MAIN CONTENT -->
     <section id="main" class="container-sm single-page">
         <div>
+            <h4>Diary</h4>
+            <div class="divider"></div>
+            <div class="list">
+                <p><strong>Total Number of User Diary</strong></p>
+                <p><strong class="entry-count">6</strong></p>
+            </div>
+            <h4>General Settings</h4>
+            <div class="divider"></div>
+            <div class="list">
+                <p>Set Reminder</p>
+                <input type="checkbox" name="reminder" id="reminder">
+            </div>
             <h4>User Profile</h4>
             <div class="divider"></div>
             <div class="list">
@@ -97,19 +102,7 @@
                 <p>Email Address</p>
                 <p>onwuzorvictor@outlook.com</p>
             </div>
-            <h4>General Settings</h4>
-            <div class="divider"></div>
-            <div class="list">
-                <p>Set Reminder</p>
-                <input type="checkbox" name="reminder" id="reminder">
-            </div>
-            <h4>Diary</h4>
-            <div class="divider"></div>
-            <div class="list">
-                <p>Total Number of User Diary</p>
-                <p><strong>6</strong></p>
-            </div>
-        </div> 
+        </div>
     </section>
     <footer class="footer">
         <p>MyDiary &copy; 2018.</p>
