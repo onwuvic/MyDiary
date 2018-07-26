@@ -28,8 +28,9 @@
             </div>
             <!-- NAVIGATION -->
             <nav class="navbar-grid-equal">
-                <a href="#" class="notify pointer">
-                    <i class="far fa-bell fa-lg notify"></i> <span class="notify-count notify-available">9</span>
+                <a href="index.html">
+                    <i class="fa fa-sign-out-alt fa-lg"></i>
+                    Logout
                 </a> 
             </nav>
             <!-- SIDE-BAR MENU -->
@@ -45,32 +46,24 @@
                     <img src="image/vic.jpg" class="img-circle" alt="profile picture">
                     <span>Onwuzor Victor</span>
                 </a>
-                <a href="diaries.html">
-                    <i class="fa fa-atlas fa-lg"></i>
-                    All Diaries
-                </a>
                 <div class="divider"></div>
                 <a href="new.html">
                     <i class="fa fa-plus fa-lg"></i>
                     Create New Diary
                 </a>
-                <div class="divider"></div>
-                <a href="trash.html">
-                    <i class="fa fa-trash fa-lg"></i>
-                    Trash
-                </a>
-                <a href="archive.html">
-                    <i class="fa fa-archive fa-lg"></i>
-                    Archive
+                <a href="diaries.html">
+                    <i class="fa fa-atlas fa-lg"></i>
+                    All Diaries
                 </a>
                 <div class="divider"></div>
+                <a href="notification.html">
+                    <i class="fa fa-bell fa-lg"></i>
+                    <span class="notify-count notify-available">9</span>
+                    Notifications
+                </a>
                 <a href="settings.html">
                     <i class="fa fa-cog fa-lg"></i>
-                    Setting
-                </a>
-                <a href="index.html">
-                    <i class="fa fa-sign-out-alt fa-lg"></i>
-                    Logout
+                    Settings
                 </a> 
             </nav>
         </div>
@@ -80,8 +73,13 @@
     <section id="main" class="container-sm single-page">
         <article>
             <h1 class="text-center">I Went Blank</h1>
-            <div>
-                <p class="text-center"><small class="card-date">Created 5 July 2018</small></p>
+            <div class="card-single" id="more-content">
+                <small class="card-date">Created 5 July 2018</small>
+                <div class="view-single">
+                    <a href="edit.html">Edit</a>
+                    <a href="#">Delete</a>
+                </div>  
+                <i class="fa fa-ellipsis-v" id="more-information"></i>
             </div>
             <img src="image/five.jpg" class="card-img" alt="">
             <p class="paragraph">
@@ -93,8 +91,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias modi nemo itaque perferendis sapiente atque ad officiis, incidunt cupiditate veritatis beatae voluptas rerum vero. Molestias, non? Odio eligendi dolor facere.
             </p>
         </article>
-
-        <a href="edit.html" class="btn btn-link">Edit</a>
+        
     </section>
     <footer class="footer">
         <p>MyDiary &copy; 2018.</p>

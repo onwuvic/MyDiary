@@ -3,11 +3,13 @@
 	margin: 0;
 	padding: 0;
 }
-
+/**
+ * @credits for this ::before and ::after style goes to https://getbootstrap.com/
+ */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
@@ -27,36 +29,42 @@ body {
     margin-bottom: 100px;
 }
 
+/**
+ * @credits for this 
+ h1,h2,h3,h4,h5,h6,
+ p,ul,img, input,button,textarea style goes to https://getbootstrap.com/
+ */
+
 h1, h2, h3, h4, h5, h6, .h2 {
-  margin-bottom: 0.5rem;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
-  color: inherit;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
 }
 
 h1 {
-  font-size: 2.5rem;
+    font-size: 2.5rem;
 }
 
 h2, .h2 {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 h3 {
-  font-size: 1.75rem;
+    font-size: 1.75rem;
 }
 
 h4 {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 h5 {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 h6 {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 p, ul {
@@ -76,8 +84,6 @@ img {
 
 input,
 button,
-select,
-optgroup,
 textarea {
     margin: 0;
     font-family: inherit;
@@ -254,6 +260,7 @@ select {
 }
 
 .card-body {
+    position: relative !important;
     flex: 1 1 auto;
     padding: 1.25rem;
 }
@@ -274,6 +281,81 @@ select {
 .card-footer > * {
     padding-left: 3px;
     cursor: pointer; 
+}
+
+.card-more, .card-single {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.card-single {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.view-more {
+    position: absolute;
+    right: 14%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    width: 100px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+
+.view-single {
+    position: absolute;
+    right: 4%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+    width: 100px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+
+.view-more:after, .view-single:after  {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border: solid transparent;
+    content: '';
+    height: 0;
+    width: 0;
+    pointer-events: none;
+    border-color: rgba(0, 151, 167, 0);
+    border-top-color: #ddd;
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+.view-more > a, .view-single > a {
+    padding: 5px;
+}
+
+.view-more > a:hover, .view-single > a:hover {
+    background-color: #333333;
+    color: white;
+    z-index: 2;
+}
+
+.fa-ellipsis-v {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.card-more.clicked .view-more, .card-single.clicked .view-single {
+    opacity: 1;
 }
 
 .footer {
@@ -364,6 +446,10 @@ select {
 
 .btn-circle:hover {
     transform: scale(1.1);
+}
+
+.login-color {
+    color: #00A4E4;
 }
 
 /* Forms */
@@ -489,4 +575,8 @@ select {
 
 .list input[type="checkbox"] {
     margin:20px;
+}
+
+.entry-count {
+    font-size: 2rem;
 }
