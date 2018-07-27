@@ -30,9 +30,10 @@ body {
 }
 
 /**
- * @credits for this 
- h1,h2,h3,h4,h5,h6,
- p,ul,img, input,button,textarea style goes to https://getbootstrap.com/
+ * @credits for this
+  h1,h2,h3,h4,h5,h6,p,ul,img,
+  input,button,textarea,select
+  style goes to https://getbootstrap.com/
  */
 
 h1, h2, h3, h4, h5, h6, .h2 {
@@ -232,7 +233,13 @@ select {
 
 .profile-avatar > span {
     margin-left: 10px;
-} 
+}
+
+/**
+ * @credits for this
+  .card, .card-img, .card-body, .card-footer
+  style goes to https://getbootstrap.com/
+ */
 
 /* Cards */
 .card {
@@ -280,7 +287,7 @@ select {
 
 .card-footer > * {
     padding-left: 3px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .card-more, .card-single {
@@ -362,10 +369,16 @@ select {
     position: absolute;
     bottom: 0;
     width: 100%;
-    line-height: 60px; 
+    line-height: 60px;
     text-align: center;
     background-color: #f5f5f5;
 }
+
+/**
+ * @credits for this
+  .btn
+  style goes to https://getbootstrap.com/
+ */
 
 /* Login & Sign up Buttons */
 .btn-close {
@@ -389,10 +402,6 @@ select {
     cursor: pointer;
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-  
-.btn.disabled, .btn:disabled {
-    opacity: 0.65;
 }
 
 .btn-info {
@@ -484,6 +493,13 @@ select {
     margin-top: 20px;
 }
 
+/**
+ * @credits for this
+  .form input[type="text"], .form input[type="password"], .form input[type="email"]
+  .read-only .form textarea
+  style goes to https://getbootstrap.com/
+ */
+
 .form input[type="text"], .form input[type="password"], .form input[type="email"] {
     border-radius: 3px;
     border: none;
@@ -570,7 +586,7 @@ select {
 .list {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
 }
 
 .list input[type="checkbox"] {
