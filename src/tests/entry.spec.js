@@ -1,8 +1,8 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import uniqid from 'uniqid';
-import app from '../src/app';
-import Entry from '../src/api/models/Entry';
+import app from '../app';
+import Entry from '../models/Entry';
 
 chai.use(chaiHttp);
 const baseUrl = '/api/v1';
