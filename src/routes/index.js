@@ -1,7 +1,8 @@
 import express from 'express';
-// import {
-//   getAll, createOne, getOne, updateOne
-// } from '../contollers/EntryController';
+import { signUp, login } from '../contollers/UserController';
+import isAnyEmpty from './../middlewares/isAnyEmpty';
+import doesUserExist from './../middlewares/doesUserExist';
+import hashPassword from './../middlewares/hashPassword';
 
 const router = express.Router();
 
@@ -9,6 +10,15 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.send('Home Page');
 });
+
+router.post('/users/signup',
+  isAnyEmpty,
+  doesUserExist,
+  hashPassword,
+  signUp
+);
+
+router.post('/users/login', login);
 
 // // GET ALL ENTRIES
 // router.get('/entries', getAll);
