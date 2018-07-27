@@ -1,5 +1,14 @@
 import bcrypt from 'bcrypt';
 
+/**
+ * A function that hash password.
+ *
+ * @param {Request: user input request} req
+ * @param {Response: programs reponses} res
+ * @param {Next: move on to the next middleware } next
+ *
+ * return status: 400 [bad request] 'User already exist' or move to next middleware
+ */
 const hashPassword = (req, res, next) => {
   if(req.body.password) {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -8,7 +17,7 @@ const hashPassword = (req, res, next) => {
       next();
     });
   } else {
-    res.json({error: 'password was not supplied'});
+    res.status(400).json({error: 'password was not supplied'});
   }
 }
 

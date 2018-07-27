@@ -1,5 +1,5 @@
 import express from 'express';
-import { signUp, login } from '../contollers/UserController';
+import { signUp, logIn } from '../contollers/UserController';
 import isAnyEmpty from './../middlewares/isAnyEmpty';
 import doesUserExist from './../middlewares/doesUserExist';
 import hashPassword from './../middlewares/hashPassword';
@@ -18,7 +18,7 @@ router.post('/users/signup',
   signUp
 );
 
-router.post('/users/login', login);
+router.post('/users/login', logIn);
 
 // // GET ALL ENTRIES
 // router.get('/entries', getAll);
