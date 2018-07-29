@@ -1,11 +1,13 @@
-// import Entry from '../models/Entry';
+import db from '../database';
 
-// // GET ALL ENTRIES IN MEMORY
-// export const getAll = (req, res) => {
-//   Entry.findAll()
-//     .then(entry => res.status(200).json(entry))
-//     .catch(() => res.status(500).send('There was a problem finding the entries'));
-// };
+// GET ALL ENTRIES
+export const findAll = (req, res) => {
+  db.any('SELECT * FROM entries WHERE users_id = $1', req.user.id)
+  .then((entries) => {
+    return res.status(200).json(entries);
+  })
+  .catch((error) => res.status(500).send('There was a problem finding the diaries.'));
+};
 
 // // CREATE A NEW ENTRY
 // export const createOne = (req, res) => {

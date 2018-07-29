@@ -1,28 +1,55 @@
-// import chai, { expect } from 'chai';
-// import chaiHttp from 'chai-http';
-// import uniqid from 'uniqid';
-// import app from '../app';
-// import Entry from '../models/Entry';
+import chai, { expect } from 'chai';
+import chaiHttp from 'chai-http';
+import db from '../database';
+import app from '../app';
 
-// chai.use(chaiHttp);
-// const baseUrl = '/api/v1';
+chai.use(chaiHttp);
+const baseUrl = '/api/v1';
 
-// describe('Entry', () => {
-//   describe('entries endpoints', () => {
-//     describe('GET /entries', () => {
-//       it('should GET all entries', (done) => {
-//         chai.request(app)
-//           .get(`${baseUrl}/entries`)
-//           .end((error, res) => {
-//             if (error) done(error);
+describe('Entry', () => {
 
-//             expect(res).to.have.status(200);
-//             expect(res.body).to.be.an('array');
-//             expect(res.body).to.have.lengthOf(0);
-//             done();
-//           });
-//       });
-//     });
+  const newUser = {
+    firstname: 'john',
+    lastname: 'doe',
+    email: 'johndoe@outlook.com',
+    password: 'password123'
+  };
+
+  let jwt;
+
+  before((done) => {
+    chai.request(app)
+      .post(`${baseUrl}/users/signup`)
+      .send(newUser)
+      .end((error, res) => {
+        if(error) done();
+        jwt = res.body;
+
+        done();
+      });
+  });
+
+  after((done) => {
+    db.any('TRUNCATE  $1:name, $2:name CASCADE', ['users', 'entries'])
+      .then(() => done())
+      .catch(() => done());
+  });
+
+  describe('GET /entries', () => {
+    it('should GET all entries', (done) => {
+      chai.request(app)
+        .get(`${baseUrl}/entries`)
+        .set('Authorization', `Bearer ${jwt}`)
+        .end((error, res) => {
+          if (error) done(error);
+
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an('array');
+          done();
+        });
+    });
+  });
+});
 
 //     /* eslint-disable no-unused-expressions */
 //     describe('POST /entries', () => {
