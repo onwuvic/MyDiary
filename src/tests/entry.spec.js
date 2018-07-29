@@ -9,6 +9,7 @@ const baseUrl = '/api/v1';
 describe('Entry', () => {
 
   const newUser = {
+    id: 1,
     firstname: 'john',
     lastname: 'doe',
     email: 'johndoe@outlook.com',
@@ -49,6 +50,36 @@ describe('Entry', () => {
         });
     });
   });
+
+  describe('GET /entries/:id', () => {
+
+    const newEntry = {
+      title: 'play of all',
+      body: 'He plays all time',
+      feature_image: 'http://image.jpg',
+      users_id: 1
+    };
+
+    it('should GET only ONE entry by id', (done) => {
+
+      db.one('INSERT INTO entries(title, body, feature_image, users_id)' +
+      'VALUES(${title}, ${body}, ${feature_image}, ${users_id}) returning *', newEntry)
+        .then((entry) => {
+          chai.request(app)
+          .get(`${baseUrl}/entries/${entry.id}`)
+          .set('Authorization', `Bearer ${jwt}`)
+          .end((error, res) => {
+            if(error) done(error);
+
+            expect(res).to.have.status(200);
+            done();
+          })
+          done();
+        })
+        .catch(() => done())
+    });
+  });
+
 });
 
 //     /* eslint-disable no-unused-expressions */
