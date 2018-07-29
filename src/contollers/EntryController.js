@@ -20,12 +20,14 @@ export const findAll = (req, res) => {
 //     .catch(() => res.status(500).send('There was a problem creating the entry to the database.'));
 // };
 
-// // GET A SINGLE ENTRY IN MEMORY
-// export const getOne = (req, res) => {
-//   Entry.findOne(req.params.id)
-//     .then(entry => res.status(200).json(entry))
-//     .catch(() => res.status(404).send('No entry found'));
-// };
+// GET A SINGLE ENTRY
+export const findOneById = (req, res) => {
+  const entryId = parseInt(req.params.id);
+
+  db.one('SELECT * FROM entries WHERE id = $1 AND users_id = $2', [entryId, req.user.id])
+    .then((entries) => res.status(200).json(entries))
+    .catch(() => res.status(404).send('No diary found with this ID'));
+};
 
 // // UPDATE A SINGLE ENTRY IN MEMORY
 // export const updateOne = (req, res) => {

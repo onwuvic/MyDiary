@@ -3,7 +3,7 @@ import { signUp, logIn } from '../contollers/UserController';
 import isAnyEmpty from '../middlewares/isAnyEmpty';
 import doesUserExist from '../middlewares/doesUserExist';
 import hashPassword from '../middlewares/hashPassword';
-import { findAll } from '../contollers/EntryController';
+import { findAll, findOneById } from '../contollers/EntryController';
 import isEmail from '../middlewares/isEmail';
 import isAuth from '../middlewares/isAuth';
 
@@ -27,8 +27,8 @@ router.post('/users/login', logIn);
 // GET ALL ENTRIES
 router.get('/entries', isAuth, findAll);
 
-// // GET ONE ENTRY
-// router.get('/entries/:id', getOne);
+// GET ONE ENTRY
+router.get('/entries/:id', isAuth, findOneById);
 
 // // CREATE NEW ENTRY
 // router.post('/entries', createOne);
