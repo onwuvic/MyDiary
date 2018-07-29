@@ -12,9 +12,11 @@ import refactorUserData from '../helpers/refactorUserData';
  * return boolean: true if valid or status code of specific error if not valid
  */
 const isAuth = (req, res, next) => {
+  console.log(req.get('authorization'));
   let bearerToken;
   // get the req.header authorization token
-  let bearerHeader = req.header["authorization"];
+  let bearerHeader = req.get('authorization');
+  // let bearerHeader = req.header["authorization"];
 
   if(typeof bearerHeader !== 'undefined') {
     let bearer = bearerHeader.split(' ');
