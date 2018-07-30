@@ -13,8 +13,7 @@
     "lint": "esw server/src --color",
     "lint:fix": "esw server/src --fix",
     "lint:watch": "npm run lint -- --watch",
-    "test": "nyc mocha --timeout 10000 \"server/src/tests/**/*.spec.js\"",
-    "test:dev": "cross-env NODE_ENV=test nyc mocha --timeout 10000 \"server/src/tests/**/*.spec.js\"",
+    "test": "cross-env NODE_ENV=test nyc mocha --timeout 10000 \"server/src/tests/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
