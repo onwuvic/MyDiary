@@ -24,6 +24,8 @@ describe('Entry', () => {
       .send(newUser)
       .end((error, res) => {
         if(error) done();
+
+        console.log(res.body);
         jwt = res.body;
 
         done();
