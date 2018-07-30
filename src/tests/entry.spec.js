@@ -46,6 +46,7 @@ describe('Entry', () => {
 
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('array');
+          expect(res.body).to.have.lengthOf(0);
           done();
         });
     });
@@ -67,6 +68,40 @@ describe('Entry', () => {
         .then((entry) => {
           chai.request(app)
           .get(`${baseUrl}/entries/${entry.id}`)
+          .set('Authorization', `Bearer ${jwt}`)
+          .end((error, res) => {
+            if(error) done(error);
+
+            expect(res).to.have.status(200);
+            expect(res.body).to.have.property('title').to.equal('play of all');
+            expect(res.body).to.have.property('body').to.equal('He plays all time');
+            expect(res.body).to.have.property('feature_image').to.equal('http://image.jpg');
+            expect(res.body).to.have.property('id').eql(entry.id);
+            expect(res.body).to.have.property('users_id').eql(1);
+            done();
+          })
+          done();
+        })
+        .catch(() => done())
+    });
+  });
+
+  describe('DELETE /entries/:id', () => {
+
+    const newEntry = {
+      title: 'play of all',
+      body: 'He plays all time',
+      feature_image: 'http://image.jpg',
+      users_id: 1
+    };
+
+    it('should DELETE only ONE entry by id', (done) => {
+
+      db.one('INSERT INTO entries(title, body, feature_image, users_id)' +
+      'VALUES(${title}, ${body}, ${feature_image}, ${users_id}) returning *', newEntry)
+        .then((entry) => {
+          chai.request(app)
+          .delete(`${baseUrl}/entries/${entry.id}`)
           .set('Authorization', `Bearer ${jwt}`)
           .end((error, res) => {
             if(error) done(error);

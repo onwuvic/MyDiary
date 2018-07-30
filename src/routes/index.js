@@ -3,7 +3,7 @@ import { signUp, logIn } from '../contollers/UserController';
 import isAnyEmpty from '../middlewares/isAnyEmpty';
 import doesUserExist from '../middlewares/doesUserExist';
 import hashPassword from '../middlewares/hashPassword';
-import { findAll, findOneById } from '../contollers/EntryController';
+import { findAll, findOneById, findByIdAndRemove } from '../contollers/EntryController';
 import isEmail from '../middlewares/isEmail';
 import isAuth from '../middlewares/isAuth';
 
@@ -35,5 +35,8 @@ router.get('/entries/:id', isAuth, findOneById);
 
 // // UPDATE ONE ENTRY
 // router.put('/entries/:id', updateOne);
+
+// DELETE ONE ENTRY
+router.delete('/entries/:id', isAuth, findByIdAndRemove);
 
 export default router;
