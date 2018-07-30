@@ -11,3 +11,9 @@ yarn-error.log
 .nyc_output
 coverage
 build
+server/.nyc_output
+server/coverage
+server/build
+/.nyc_output
+/coverage
+/build
