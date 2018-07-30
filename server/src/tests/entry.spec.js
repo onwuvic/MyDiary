@@ -6,7 +6,7 @@ import app from '../app';
 chai.use(chaiHttp);
 const baseUrl = '/api/v1';
 
-describe('Entry', () => {
+describe.only('Entry', () => {
 
   const newUser = {
     id: 1,
