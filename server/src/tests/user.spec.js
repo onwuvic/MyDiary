@@ -23,7 +23,6 @@ describe.only('User', () => {
         if(error) done();
 
         console.log(res.error.text);
-        console.log(res);
         console.log(res.body);
         done();
       });
