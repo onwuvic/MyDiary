@@ -6,7 +6,7 @@ import app from '../app';
 chai.use(chaiHttp);
 const baseUrl = '/api/v1';
 
-describe('User', () => {
+describe.only('User', () => {
 
   const newUser = {
     firstname: 'john',
@@ -19,8 +19,12 @@ describe('User', () => {
     chai.request(app)
       .post(`${baseUrl}/users/signup`)
       .send(newUser)
-      .end((error) => {
+      .end((error, res) => {
         if(error) done();
+
+        console.log(res.error.text);
+        console.log(res);
+        console.log(res.body);
         done();
       });
   });
