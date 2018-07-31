@@ -18,7 +18,7 @@ describe.only('Entry', () => {
 
   let jwt;
 
-  before((done) => {
+  beforeEach((done) => {
     chai.request(app)
       .post(`${baseUrl}/users/signup`)
       .send(newUser)
@@ -32,7 +32,7 @@ describe.only('Entry', () => {
       });
   });
 
-  after((done) => {
+  afterEach((done) => {
     db.any('TRUNCATE  $1:name, $2:name CASCADE', ['users', 'entries'])
       .then(() => done())
       .catch(() => done());
