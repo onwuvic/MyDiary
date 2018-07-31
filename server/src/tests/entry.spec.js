@@ -59,7 +59,7 @@ describe.only('Entry', () => {
     const newEntry = {
       title: 'play of all',
       body: 'He plays all time',
-      feature_image: 'http://image.jpg',
+      feature_image: 'http://image4.jpg',
       users_id: 1
     };
 
@@ -77,7 +77,7 @@ describe.only('Entry', () => {
             expect(res).to.have.status(200);
             expect(res.body).to.have.property('title').to.equal('play of all');
             expect(res.body).to.have.property('body').to.equal('He plays all time');
-            expect(res.body).to.have.property('feature_image').to.equal('http://image.jpg');
+            expect(res.body).to.have.property('feature_image').to.equal('http://image4.jpg');
             expect(res.body).to.have.property('id').eql(entry.id);
             expect(res.body).to.have.property('users_id').eql(1);
             done();
