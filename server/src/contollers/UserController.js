@@ -12,9 +12,11 @@ import refactorUserData from '../helpers/refactorUserData';
  * return web token [which only user to navigate secure part of the app and resources ]
 */
 export const signUp = (req, res) => {
+  const { firstname, lastname, email, password } = req.body;
+
   db.one('INSERT INTO users(firstname, lastname, email, password)' +
   'VALUES(${firstname}, ${lastname}, ${email}, ${password}) RETURNING *',
-    req.body)
+    { firstname, lastname, email, password })
     .then((user) => {
       const userData = refactorUserData(user);
       const token = tokenGenerator(userData);
@@ -32,11 +34,6 @@ export const signUp = (req, res) => {
 */
 export const logIn = (req, res) => {
   const { email, password } = req.body;
-
-  // check if email and password is not empty
-  if(!email.trim() || !password.trim()) {
-    return res.status(422).send('You must provide an email and a password.');
-  }
 
   // check if mail exist in the database
   db.one('SELECT * FROM users WHERE email = $1', email)

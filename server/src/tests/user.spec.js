@@ -6,13 +6,14 @@ import app from '../app';
 chai.use(chaiHttp);
 const baseUrl = '/api/v1';
 
-describe.only('User', () => {
+describe('User', () => {
 
   const newUser = {
     firstname: 'john',
     lastname: 'doe',
     email: 'johndoe@outlook.com',
-    password: 'password123'
+    password: 'password123',
+    confirmPassword: 'password123'
   };
 
   before((done) => {
@@ -40,7 +41,8 @@ describe.only('User', () => {
       firstname: 'victor',
       lastname: 'onwuzor',
       email: 'onwuzorvictor@outlook.com',
-      password: 'password123'
+      password: 'password123',
+      confirmPassword: 'password123'
     };
 
     it("should get a 201 status code and auth header", (done) => {
