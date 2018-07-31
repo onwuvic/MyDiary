@@ -15,7 +15,15 @@ describe('Entry', () => {
     password: 'password123'
   };
 
+  const newEntry = {
+    title: 'play of all',
+    body: 'He plays all time',
+    users_id: 1
+  };
+
   let jwt;
+
+  let entryData;
 
   before((done) => {
     chai.request(app)
@@ -29,6 +37,19 @@ describe('Entry', () => {
         console.log(res.body);
         jwt = res.body;
 
+        done();
+      });
+  });
+
+  before((done) => {
+    chai.request(app)
+      .post(`${baseUrl}/entries`)
+      .send(newEntry)
+      .set('Authorization', `Bearer ${jwt}`)
+      .end((error, res) => {
+        if(error) done();
+
+        entryData = res.body;
         done();
       });
   });
@@ -49,20 +70,13 @@ describe('Entry', () => {
 
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('array');
-          expect(res.body).to.have.lengthOf(0);
+          expect(res.body).to.have.lengthOf(1);
           done();
         });
     });
   });
 
   describe('GET /entries/:id', () => {
-
-    const newEntry = {
-      title: 'play of all',
-      body: 'He plays all time',
-      feature_image: 'http://image4.jpg',
-      users_id: 1
-    };
 
     it('should GET only ONE entry by id', (done) => {
 

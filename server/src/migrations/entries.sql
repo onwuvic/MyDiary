@@ -1,11 +1,10 @@
 CREATE TABLE entries (
-    id serial NOT NULL PRIMARY KEY,
-    title character varying(255) NOT NULL,
+    id serial NOT NULL,
+    title varchar(255) NOT NULL,
     body text NOT NULL,
-    feature_image character varying(255),
-    created_at timestamp without time zone NOT NULL DEFAULT now(),
+    feature_image text,
+    created_At timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
     users_id integer NOT NULL,
-    CONSTRAINT entries_pkey PRIMARY KEY (id),
-    CONSTRAINT entries_users_id_fkey FOREIGN KEY (users_id)
-        REFERENCES public.users (id) MATCH SIMPLE
+    PRIMARY KEY (id),
+    FOREIGN KEY (users_id) REFERENCES users(id)
 )
