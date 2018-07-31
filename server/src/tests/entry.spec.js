@@ -9,7 +9,6 @@ const baseUrl = '/api/v1';
 describe.only('Entry', () => {
 
   const newUser = {
-    id: 1,
     firstname: 'john',
     lastname: 'doe',
     email: 'johndoe@outlook.com',
