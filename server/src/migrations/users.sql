@@ -4,5 +4,5 @@ CREATE TABLE users (
   lastname varchar(255) NOT NULL,
   email varchar(255) NOT NULL UNIQUE,
   password text NOT NULL,
-  created_At timestamp with time zone DEFAULT CURRENT_TIMESTAMP
+  created_At timestamp with time zone DEFAULT NOW()
 )

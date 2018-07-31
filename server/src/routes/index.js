@@ -3,9 +3,12 @@ import { signUp, logIn } from '../contollers/UserController';
 import isAnyEmpty from '../middlewares/isAnyEmpty';
 import doesUserExist from '../middlewares/doesUserExist';
 import hashPassword from '../middlewares/hashPassword';
-import { findAll, findOneById, findByIdAndRemove } from '../contollers/EntryController';
+import { findAll, findOneById, findByIdAndRemove, create } from '../contollers/EntryController';
 import isEmail from '../middlewares/isEmail';
 import isAuth from '../middlewares/isAuth';
+import isPasswordEqual from '../middlewares/isPasswordEqual';
+import isLoginEmpty from '../middlewares/isLoginEmpty';
+import isDiaryContentEmpty from '../middlewares/isDiaryContentEmpty';
 
 const router = express.Router();
 
@@ -17,12 +20,13 @@ router.get('/', (req, res) => {
 router.post('/users/signup',
   isAnyEmpty,
   isEmail,
+  isPasswordEqual,
   doesUserExist,
   hashPassword,
   signUp
 );
 
-router.post('/users/login', logIn);
+router.post('/users/login', isLoginEmpty, logIn);
 
 // GET ALL ENTRIES
 router.get('/entries', isAuth, findAll);
@@ -30,8 +34,8 @@ router.get('/entries', isAuth, findAll);
 // GET ONE ENTRY
 router.get('/entries/:id', isAuth, findOneById);
 
-// // CREATE NEW ENTRY
-// router.post('/entries', createOne);
+// CREATE NEW ENTRY
+router.post('/entries', isDiaryContentEmpty, isAuth, create);
 
 // // UPDATE ONE ENTRY
 // router.put('/entries/:id', updateOne);

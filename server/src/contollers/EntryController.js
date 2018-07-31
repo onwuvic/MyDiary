@@ -9,16 +9,19 @@ export const findAll = (req, res) => {
   .catch((error) => res.status(500).send('There was a problem finding the diaries.'));
 };
 
-// // CREATE A NEW ENTRY
-// export const createOne = (req, res) => {
-//   Entry.create({
-//     title: req.body.title,
-//     body: req.body.body,
-//     feature_image: req.body.feature_image
-//   })
-//     .then(entry => res.status(201).json(entry))
-//     .catch(() => res.status(500).send('There was a problem creating the entry to the database.'));
-// };
+// CREATE A NEW ENTRY
+export const create = (req, res) => {
+  req.body.users_id = req.user.id;
+
+  // remember to change db.query to db.none and update it to upload images and validation of entry
+  db.one('INSERT INTO entries(title, body, users_id)' +
+  'VALUES(${title}, ${body}, ${users_id}) returning *',
+    req.body)
+    .then((entry) => {
+      return res.status(201).json(entry);
+    })
+    .catch((err) => res.status(500).send('There was a problem adding the diary to the database.'));
+};
 
 // GET A SINGLE ENTRY
 export const findOneById = (req, res) => {
