@@ -35,7 +35,7 @@ describe('User', () => {
       .catch(() => done());
   });
 
-  describe('POST /users/signup', () => {
+  describe('Create new user', () => {
 
     const newUser = {
       firstname: 'victor',
@@ -45,7 +45,7 @@ describe('User', () => {
       confirmPassword: 'password123'
     };
 
-    it("should get a 201 status code and auth header", (done) => {
+    it("should Create new user and return a token", (done) => {
       chai.request(app)
         .post(`${baseUrl}/users/signup`)
         .send(newUser)
@@ -59,14 +59,14 @@ describe('User', () => {
     });
   });
 
-  describe('Post /users/login', () => {
+  describe('Login users', () => {
 
     let loginUser = {
       email: newUser.email,
       password: newUser.password
     }
 
-    it("should login user in and return a web token", (done) => {
+    it("should Log In user and return a web token", (done) => {
       chai.request(app)
         .post(`${baseUrl}/users/login`)
         .send(loginUser)

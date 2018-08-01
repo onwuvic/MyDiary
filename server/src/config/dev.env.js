@@ -3,7 +3,7 @@
  * It export our development environment configuration
  * It get our development database url for .env file
  */
-const db = process.env.DATA_URL;
+const db = process.env.DATABASE_URL;
 
 export const config = {
   database: {

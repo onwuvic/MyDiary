@@ -7,7 +7,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const port = process.env.PORT;
 
 // database url for development
-const db = process.env.DATA_URL;
+const db = process.env.DATABASE_URL;
 
 // store our environment state in an env variable
 const env = process.env.NODE_ENV;
