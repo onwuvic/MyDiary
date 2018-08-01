@@ -11,13 +11,13 @@ import db from '../database';
  * return status: 400 [bad request] 'User already exist' or move to next middleware
  */
 const canUpdateEntry = (req, res, next) => {
-  let entryId = req.params.id;
+  const entryId = req.params.id;
 
   db.one('SELECT created_At FROM entries WHERE id = $1', entryId)
-    .then(createdAt => {
-      
+    .then((createdAt) => {
+
     })
     .catch(() => next());
-}
+};
 
 export default doesUserExist;

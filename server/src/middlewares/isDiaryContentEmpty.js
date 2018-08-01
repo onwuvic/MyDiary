@@ -10,18 +10,16 @@
  * return status code 400 with 'All fields are required'
  */
 const isDiaryContentEmpty = (req, res, next) => {
-
   const { title, body } = req.body;
 
-  if(!title.trim() || !body.trim()) {
+  if (!title.trim() || !body.trim()) {
     return res.status(400).json({
       statusCode: 400,
       status: 'error',
       message: 'All fields are required'
     });
-  } else {
-    return next();
   }
-}
+  return next();
+};
 
 export default isDiaryContentEmpty;

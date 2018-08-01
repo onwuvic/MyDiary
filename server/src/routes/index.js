@@ -3,7 +3,9 @@ import { signUp, logIn } from '../contollers/UserController';
 import isAnyEmpty from '../middlewares/isAnyEmpty';
 import doesUserExist from '../middlewares/doesUserExist';
 import hashPassword from '../middlewares/hashPassword';
-import { findAll, findOneById, findByIdAndRemove, findByIdAndUpdate, create } from '../contollers/EntryController';
+import {
+  findAll, findOneById, findByIdAndRemove, findByIdAndUpdate, create
+} from '../contollers/EntryController';
 import isEmail from '../middlewares/isEmail';
 import isAuth from '../middlewares/isAuth';
 import isPasswordEqual from '../middlewares/isPasswordEqual';
@@ -23,8 +25,7 @@ router.post('/users/signup',
   isPasswordEqual,
   doesUserExist,
   hashPassword,
-  signUp
-);
+  signUp);
 
 router.post('/users/login', isLoginEmpty, logIn);
 
