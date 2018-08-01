@@ -12,7 +12,11 @@ const isAnyEmpty = (req, res, next) => {
   const { firstname, lastname, email, password } = req.body;
 
   if(!firstname.trim() || !lastname.trim() || !email.trim() || !password.trim()) {
-    return res.status(400).send('All fields are required');
+    return res.status(400).send({
+      statusCode: 400,
+      status: 'error',
+      message: 'All fields are required'
+    });
   } else {
     return next();
   }

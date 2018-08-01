@@ -14,7 +14,11 @@ const isDiaryContentEmpty = (req, res, next) => {
   const { title, body } = req.body;
 
   if(!title.trim() || !body.trim()) {
-    return res.status(400).send('All fields are required');
+    return res.status(400).json({
+      statusCode: 400,
+      status: 'error',
+      message: 'All fields are required'
+    });
   } else {
     return next();
   }

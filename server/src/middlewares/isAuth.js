@@ -24,16 +24,28 @@ const isAuth = (req, res, next) => {
 
     // check if the bearer match that of the bearer specified in our env
     if(bearer[0] !== process.env.BEARER) {
-      return res.status(400).send('bearer not understood');
+      return res.status(400).json({
+        statusCode: 400,
+        status: 'error',
+        message: 'bearer not understood'
+      });
     }
 
     // used jsonwebtoken to decode and very if the token is valid
     jwt.verify(bearerToken, process.env.SECRET_KEY, (err, decoded) => {
       if(err) {
         if(err.name === 'TokenExpiredError') {
-          return res.status(400).send('Session timed out, please login again');
+          return res.status(400).json({
+            statusCode: 400,
+            status: 'error',
+            message: 'Session timed out, please login again'
+          });
         } else {
-          return res.status(400).send('Error authenticating, please login again');
+          return res.status(400).json({
+            statusCode: 400,
+            status: 'error',
+            message: 'Error authenticating, please login again'
+          });
         }
       }
 
@@ -49,11 +61,19 @@ const isAuth = (req, res, next) => {
           next();
         })
         .catch(() =>
-          res.status(404).send('User not found')
+          res.status(404).json({
+            statusCode: 404,
+            status: 'error',
+            message: 'User not found'
+          })
         );
     });
   } else {
-    return res.status(400).send('No token provided');
+    return res.status(400).json({
+      statusCode: 400,
+      status: 'error',
+      message: 'No token provided'
+    });
   }
 }
 

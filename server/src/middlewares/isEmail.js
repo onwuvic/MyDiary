@@ -18,7 +18,11 @@ const isEmail = (req, res, next) => {
   if(emailRegex.test(email)) {
     next();
   } else {
-    return res.status(400).send('Invalid Email Address');
+    return res.status(400).json({
+      statusCode: 400,
+      status: 'error',
+      message: 'Invalid Email Address'
+    });
   }
 }
 

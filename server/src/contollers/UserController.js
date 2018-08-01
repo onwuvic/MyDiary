@@ -20,9 +20,18 @@ export const signUp = (req, res) => {
     .then((user) => {
       const userData = refactorUserData(user);
       const token = tokenGenerator(userData);
-      return res.status(201).json(token);
+      return res.status(201).json({
+        statusCode: 201,
+        status: 'success',
+        message: 'Successfully signup',
+        token: token
+      });
     })
-    .catch((err) => res.status(500).send('Can not sign up now. Try again.'));
+    .catch((err) => res.status(500).json({
+      statusCode: 500,
+      status: 'error',
+      message: 'Can not sign up now. Try again.'
+    }));
 };
 
 /**
@@ -45,14 +54,31 @@ export const logIn = (req, res) => {
         // check if user password match
         bcrypt.compare(password, userData.password)
         .then((matched) => {
-          if (!matched) return res.status(400).send('Invalid email and password.');
+          if (!matched) return res.status(400).json({
+            statusCode: 400,
+            status: 'error',
+            message: 'Invalid email and password.'
+          });
         })
         .then(() => {
           const token = tokenGenerator(refactorUser);
-          return res.status(200).json(token);
+          return res.status(200).json({
+            statusCode: 200,
+            status: 'success',
+            message: 'Successfully login',
+            token: token
+          });
         })
-        .catch((error) => res.status(505).send('Can not resolve password'));
+        .catch((error) => res.status(505).json({
+          statusCode: 505,
+          status: 'error',
+          message: 'Can not resolve password'
+        }));
       }
     })
-    .catch((error) => res.status(404).send('User not found, please sign up.'));
+    .catch((error) => res.status(404).send({
+      statusCode: 404,
+      status: 'error',
+      message: 'User not found, please sign up.'
+    }));
 }
