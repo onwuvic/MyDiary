@@ -15,7 +15,11 @@ const isPasswordEqual = (req, res, next) => {
   if(password === confirmPassword) {
     next();
   } else {
-    return res.status(400).send('Password do not match');
+    return res.status(400).json({
+      statusCode: 400,
+      status: 'error',
+      message: 'Password do not match'
+    });
   }
 }
 

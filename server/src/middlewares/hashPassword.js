@@ -17,7 +17,11 @@ const hashPassword = (req, res, next) => {
       next();
     });
   } else {
-    res.status(400).json({error: 'password was not supplied'});
+    res.status(400).json({
+      statusCode: 400,
+      status: 'error',
+      message: 'password was not supplied'
+    });
   }
 }
 

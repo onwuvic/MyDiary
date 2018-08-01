@@ -12,7 +12,11 @@ import db from '../database';
 const doesUserExist = (req, res, next) => {
   db.one('SELECT email FROM users WHERE email = $1', req.body.email)
     .then(email => {
-      if(email) return res.status(400).send('User already exist');
+      if(email) return res.status(400).json({
+        statusCode: 400,
+        status: 'error',
+        message: 'User already exist'
+      });
     })
     .catch(() => next());
 }

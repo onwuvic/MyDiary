@@ -23,8 +23,6 @@ describe('User', () => {
       .end((error, res) => {
         if(error) done();
 
-        console.log(res.error.text);
-        console.log(res.body);
         done();
       });
   });
@@ -53,7 +51,10 @@ describe('User', () => {
           if(error) done(error);
 
           expect(res).to.have.status(201);
-          expect(res).to.be.header;
+          expect(res.body).to.be.header;
+          expect(res.body).to.have.property('token').to.be.a('string');
+          expect(res.body).to.have.property('status').eql('success');
+          expect(res.body).to.have.property('message').eql('Successfully signup');
           done();
         });
     });
@@ -74,7 +75,10 @@ describe('User', () => {
           if(error) done();
 
           expect(res).to.have.status(200);
-          expect(res).to.be.header;
+          expect(res.body).to.be.header;
+          expect(res.body).to.have.property('token').to.be.a('string');
+          expect(res.body).to.have.property('status').eql('success');
+          expect(res.body).to.have.property('message').eql('Successfully login');
           done();
         })
     });
