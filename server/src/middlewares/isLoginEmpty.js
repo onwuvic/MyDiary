@@ -8,18 +8,16 @@
  * return status: 400 [bad request] 'All fields are required' or move to next middleware
  */
 const isLoginEmpty = (req, res, next) => {
-
   const { email, password } = req.body;
 
-  if(!email.trim() || !password.trim()) {
+  if (!email.trim() || !password.trim()) {
     return res.status(422).json({
       statusCode: 422,
       status: 'error',
       message: 'You must provide an email and a password.'
     });
-  } else {
-    return next();
   }
-}
+  return next();
+};
 
 export default isLoginEmpty;

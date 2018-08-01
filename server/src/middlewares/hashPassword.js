@@ -10,11 +10,11 @@ import bcrypt from 'bcrypt';
  * return status: 400 [bad request] 'User already exist' or move to next middleware
  */
 const hashPassword = (req, res, next) => {
-  if(req.body.password) {
+  if (req.body.password) {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
-      if(err) return next(err);
+      if (err) return next(err);
       req.body.password = hash;
-      next();
+      return next();
     });
   } else {
     res.status(400).json({
@@ -23,6 +23,6 @@ const hashPassword = (req, res, next) => {
       message: 'password was not supplied'
     });
   }
-}
+};
 
 export default hashPassword;

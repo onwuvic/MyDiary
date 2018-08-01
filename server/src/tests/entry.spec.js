@@ -7,7 +7,6 @@ chai.use(chaiHttp);
 const baseUrl = '/api/v1';
 
 describe('Entries', () => {
-
   const newUser = {
     firstname: 'john',
     lastname: 'doe',
@@ -25,7 +24,7 @@ describe('Entries', () => {
       .post(`${baseUrl}/users/signup`)
       .send(newUser)
       .end((error, res) => {
-        if(error) done();
+        if (error) done();
 
         jwt = res.body;
 
@@ -45,13 +44,14 @@ describe('Entries', () => {
       body: 'He plays all time',
     };
 
+    /* eslint-disable no-unused-expressions */
     it('should CREATE a new diary entry', (done) => {
       chai.request(app)
         .post(`${baseUrl}/entries`)
         .send(newEntry)
         .set('Authorization', `Bearer ${jwt.token}`)
         .end((error, res) => {
-          if(error) done();
+          if (error) done();
 
           entryData = res.body.data;
 
@@ -81,21 +81,20 @@ describe('Entries', () => {
   });
 
   describe('Get one diary entry', () => {
-
     it('should GET only ONE entry by id', (done) => {
       chai.request(app)
-      .get(`${baseUrl}/entries/${entryData.id}`)
-      .set('Authorization', `Bearer ${jwt.token}`)
-      .end((error, res) => {
-        if(error) done();
+        .get(`${baseUrl}/entries/${entryData.id}`)
+        .set('Authorization', `Bearer ${jwt.token}`)
+        .end((error, res) => {
+          if (error) done();
 
-        expect(res).to.have.status(200);
-        expect(res.body.data).to.have.property('title').to.equal(entryData.title);
-        expect(res.body.data).to.have.property('body').to.equal(entryData.body);
-        expect(res.body.data).to.have.property('id').eql(entryData.id);
-        expect(res.body.data).to.have.property('users_id').eql(entryData.users_id);
-        done();
-      })
+          expect(res).to.have.status(200);
+          expect(res.body.data).to.have.property('title').to.equal(entryData.title);
+          expect(res.body.data).to.have.property('body').to.equal(entryData.body);
+          expect(res.body.data).to.have.property('id').eql(entryData.id);
+          expect(res.body.data).to.have.property('users_id').eql(entryData.users_id);
+          done();
+        });
     });
   });
 
@@ -111,14 +110,14 @@ describe('Entries', () => {
         .send(updatedEntry)
         .set('Authorization', `Bearer ${jwt.token}`)
         .end((error, res) => {
-          if(error) done();
+          if (error) done();
 
           expect(res).to.have.status(200);
           expect(res.body.data).to.have.property('title').to.equal('we rocckkker');
           expect(res.body.data).to.have.property('body').eql('He plays all love');
           expect(res.body.status).eql('success');
           done();
-        })
+        });
     });
   });
 
@@ -126,15 +125,14 @@ describe('Entries', () => {
   describe('Delete one diary entry', () => {
     it('should DELETE only ONE entry by id', (done) => {
       chai.request(app)
-      .delete(`${baseUrl}/entries/${entryData.id}`)
-      .set('Authorization', `Bearer ${jwt.token}`)
-      .end((error, res) => {
-        if(error) done();
+        .delete(`${baseUrl}/entries/${entryData.id}`)
+        .set('Authorization', `Bearer ${jwt.token}`)
+        .end((error, res) => {
+          if (error) done();
 
-        expect(res).to.have.status(200);
-        done();
-      });
+          expect(res).to.have.status(200);
+          done();
+        });
     });
   });
-
 });

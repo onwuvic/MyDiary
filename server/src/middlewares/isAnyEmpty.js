@@ -8,18 +8,18 @@
  * return status: 400 [bad request] 'All fields are required' or move to next middleware
  */
 const isAnyEmpty = (req, res, next) => {
+  const {
+    firstname, lastname, email, password
+  } = req.body;
 
-  const { firstname, lastname, email, password } = req.body;
-
-  if(!firstname.trim() || !lastname.trim() || !email.trim() || !password.trim()) {
+  if (!firstname.trim() || !lastname.trim() || !email.trim() || !password.trim()) {
     return res.status(400).send({
       statusCode: 400,
       status: 'error',
       message: 'All fields are required'
     });
-  } else {
-    return next();
   }
-}
+  return next();
+};
 
 export default isAnyEmpty;

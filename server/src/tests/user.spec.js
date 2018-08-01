@@ -7,7 +7,6 @@ chai.use(chaiHttp);
 const baseUrl = '/api/v1';
 
 describe('User', () => {
-
   const newUser = {
     firstname: 'john',
     lastname: 'doe',
@@ -20,8 +19,8 @@ describe('User', () => {
     chai.request(app)
       .post(`${baseUrl}/users/signup`)
       .send(newUser)
-      .end((error, res) => {
-        if(error) done();
+      .end((error) => {
+        if (error) done();
 
         done();
       });
@@ -33,9 +32,9 @@ describe('User', () => {
       .catch(() => done());
   });
 
+  /* eslint-disable no-unused-expressions */
   describe('Create new user', () => {
-
-    const newUser = {
+    const newUserCreate = {
       firstname: 'victor',
       lastname: 'onwuzor',
       email: 'onwuzorvictor@outlook.com',
@@ -43,12 +42,12 @@ describe('User', () => {
       confirmPassword: 'password123'
     };
 
-    it("should Create new user and return a token", (done) => {
+    it('should Create new user and return a token', (done) => {
       chai.request(app)
         .post(`${baseUrl}/users/signup`)
-        .send(newUser)
+        .send(newUserCreate)
         .end((error, res) => {
-          if(error) done(error);
+          if (error) done(error);
 
           expect(res).to.have.status(201);
           expect(res.body).to.be.header;
@@ -61,18 +60,17 @@ describe('User', () => {
   });
 
   describe('Login users', () => {
-
-    let loginUser = {
+    const loginUser = {
       email: newUser.email,
       password: newUser.password
-    }
+    };
 
-    it("should Log In user and return a web token", (done) => {
+    it('should Log In user and return a web token', (done) => {
       chai.request(app)
         .post(`${baseUrl}/users/login`)
         .send(loginUser)
         .end((error, res) => {
-          if(error) done();
+          if (error) done();
 
           expect(res).to.have.status(200);
           expect(res.body).to.be.header;
@@ -80,7 +78,7 @@ describe('User', () => {
           expect(res.body).to.have.property('status').eql('success');
           expect(res.body).to.have.property('message').eql('Successfully login');
           done();
-        })
+        });
     });
   });
-})
+});
