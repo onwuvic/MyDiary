@@ -1,3 +1,5 @@
+\c test
+
 CREATE TABLE entries (
     id serial NOT NULL,
     title varchar(255) NOT NULL,

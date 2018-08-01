@@ -1,3 +1,5 @@
+\c test
+
 CREATE TABLE users (
   id serial NOT NULL PRIMARY KEY,
   firstname varchar(255) NOT NULL,

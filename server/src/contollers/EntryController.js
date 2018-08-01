@@ -15,7 +15,7 @@ export const create = (req, res) => {
 
   // remember to change db.query to db.none and update it to upload images and validation of entry
   db.one('INSERT INTO entries(title, body, users_id)' +
-  'VALUES(${title}, ${body}, ${users_id}) returning *',
+  'VALUES(${title}, ${body}, ${users_id}) RETURNING *',
     req.body)
     .then((entry) => {
       return res.status(201).json(entry);
@@ -32,17 +32,15 @@ export const findOneById = (req, res) => {
     .catch(() => res.status(404).send('None of your diaries was found with this ID'));
 };
 
-// // UPDATE A SINGLE ENTRY
-// export const updateOne = (req, res) => {
-//   Entry.findByIdAndUpdate(req.params.id,
-//     {
-//       title: req.body.title,
-//       body: req.body.body,
-//       feature_image: req.body.feature_image
-//     })
-//     .then(entry => res.status(200).json(entry))
-//     .catch(() => res.status(500).send('There was a problem updating the entry.'));
-// };
+// UPDATE A SINGLE ENTRY
+export const findByIdAndUpdate = (req, res) => {
+  const entryId = parseInt(req.params.id);
+
+  db.one('UPDATE entries SET title=$1, body=$2 WHERE id=$3 AND users_id = $4 RETURNING *',
+    [req.body.title, req.body.body, entryId, req.user.id])
+    .then((entry) => res.status(200).json(entry))
+    .catch(() => res.status(500).send('There was a problem updating the entries.'));
+};
 
 
 // DELETE A SINGLE ENTRY

@@ -3,7 +3,7 @@ import { signUp, logIn } from '../contollers/UserController';
 import isAnyEmpty from '../middlewares/isAnyEmpty';
 import doesUserExist from '../middlewares/doesUserExist';
 import hashPassword from '../middlewares/hashPassword';
-import { findAll, findOneById, findByIdAndRemove, create } from '../contollers/EntryController';
+import { findAll, findOneById, findByIdAndRemove, findByIdAndUpdate, create } from '../contollers/EntryController';
 import isEmail from '../middlewares/isEmail';
 import isAuth from '../middlewares/isAuth';
 import isPasswordEqual from '../middlewares/isPasswordEqual';
@@ -37,8 +37,8 @@ router.get('/entries/:id', isAuth, findOneById);
 // CREATE NEW ENTRY
 router.post('/entries', isDiaryContentEmpty, isAuth, create);
 
-// // UPDATE ONE ENTRY
-// router.put('/entries/:id', updateOne);
+// UPDATE ONE ENTRY
+router.put('/entries/:id', isAuth, findByIdAndUpdate);
 
 // DELETE ONE ENTRY
 router.delete('/entries/:id', isAuth, findByIdAndRemove);

@@ -6,7 +6,7 @@ import app from '../app';
 chai.use(chaiHttp);
 const baseUrl = '/api/v1';
 
-describe('Entry', () => {
+describe('Entries', () => {
 
   const newUser = {
     firstname: 'john',
@@ -42,13 +42,13 @@ describe('Entry', () => {
       .catch(() => done());
   });
 
-  describe('POST /entries', () => {
+  describe('Create new diary entry', () => {
     const newEntry = {
       title: 'play of all',
       body: 'He plays all time',
     };
 
-    it('should CREATE new entry', (done) => {
+    it('should CREATE a new diary entry', (done) => {
       chai.request(app)
         .post(`${baseUrl}/entries`)
         .send(newEntry)
@@ -67,8 +67,8 @@ describe('Entry', () => {
     });
   });
 
-  describe('GET /entries', () => {
-    it('should GET all entries', (done) => {
+  describe('Get all diary entries', () => {
+    it('should GET all diary entries', (done) => {
       chai.request(app)
         .get(`${baseUrl}/entries`)
         .set('Authorization', `Bearer ${jwt}`)
@@ -83,7 +83,7 @@ describe('Entry', () => {
     });
   });
 
-  describe('GET /entries/:id', () => {
+  describe('Get one diary entry', () => {
 
     it('should GET only ONE entry by id', (done) => {
       chai.request(app)
@@ -102,8 +102,32 @@ describe('Entry', () => {
     });
   });
 
+  describe('Update one diary entry', () => {
+    const updatedEntry = {
+      title: 'we rocckkker',
+      body: 'He plays all love',
+    };
 
-  describe('DELETE /entries/:id', () => {
+    it('should UPDATE an existing entries given the entry ID', (done) => {
+      chai.request(app)
+        .put(`${baseUrl}/entries/${entryData.id}`)
+        .send(updatedEntry)
+        .set('Authorization', `Bearer ${jwt}`)
+        .end((error, res) => {
+          if(error) done();
+
+          console.log(res.body);
+
+          expect(res).to.have.status(200);
+          expect(res.body).to.have.property('title').to.equal('we rocckkker');
+          expect(res.body).to.have.property('body').eql('He plays all love');
+          done();
+        })
+    });
+  });
+
+
+  describe('Delet one diary entry', () => {
     it('should DELETE only ONE entry by id', (done) => {
       chai.request(app)
       .delete(`${baseUrl}/entries/${entryData.id}`)
