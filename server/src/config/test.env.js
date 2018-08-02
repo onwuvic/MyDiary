@@ -5,6 +5,7 @@
  */
 const db = process.env.TEST_DATA_URL;
 
+/* eslint-disable import/prefer-default-export */
 export const config = {
   database: {
     url: db

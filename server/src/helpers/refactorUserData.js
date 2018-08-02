@@ -6,7 +6,7 @@
  * return object {the new refactored user data}
  */
 const refactorUserData = (userData) => {
-  let user = {
+  const user = {
     id: userData.id,
     firstname: userData.firstname,
     lastname: userData.lastname,
@@ -15,6 +15,6 @@ const refactorUserData = (userData) => {
   };
 
   return user;
-}
+};
 
 export default refactorUserData;

@@ -11,7 +11,7 @@
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./server/build/server.js",
     "lint": "esw server/src --color",
-    "lint:fix": "esw server/src/middlewares/canUpdateEntry.js --fix",
+    "lint:fix": "esw server/src --fix",
     "lint:watch": "npm run lint -- --watch",
     "test": "cross-env NODE_ENV=test nyc mocha --timeout 10000 \"server/src/tests/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch",
