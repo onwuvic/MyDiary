@@ -10,8 +10,6 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 * Users can view all entries to their diary.
 * Users can view the contents of a diary entry.
 * Users can add or modify an entry.
-* Users can archive an entry.
-* Users can trash an entry.
 * Users can delete a trash entry.
 
 ### UI Components
@@ -21,9 +19,7 @@ All UI template are in the UI folder
 * Single Diary Page
 * Edit Page
 * Add Diary Page
-* Trash Page
 * Settings Page
-* Archive Page
 
 ### Development
 This application was developed using [ExpressJS](https://expressjs.com/). [Mocha](https://mochajs.org/) and [Chai](http://www.chaijs.com/) for testing. [Babel](https://babeljs.io/) to transpile ES6 and beyond to ES5. [ESlint](https://eslint.org/) and [Airbnb Style Guide](https://github.com/airbnb/javascript) for code quality.
@@ -34,7 +30,8 @@ This application was developed using [ExpressJS](https://expressjs.com/). [Mocha
 * Clone the repository by entering the command `git clone https://github.com/onwuvic/MyDiary.git` in the terminal.
 * Navigate to the project folder using `cd MyDiary` on your terminal (or command prompt)
 * After cloning, install the application's dependencies with the command `npm install`.
-* After this, you can then start the server with the command: `npm start`.
+* Rename .env.sample file to .env fill all the parameters
+* After this, you can then start the server with the command: `npm run dev`.
 
 ### Testing
 To ensure that your installation is successful you'll need to run tests.
@@ -46,10 +43,9 @@ The API only has one endpoint which is the `/api/v1/entries` endpoint for saving
 #### POST HTTP Request
 -   `POST` /api/v1/entries
 -   INPUT:
-```x-form-url-encoded
+```x-form-url-encoded, header: 'Authorization', 'Bearer token'
 title: My Time Management Crisis
 body: It's been two weeks now, after so much consumption of time management books
-feature_image: https://imageworldwide.jpg
 ```
 
 #### POST HTTP Response
@@ -57,60 +53,81 @@ feature_image: https://imageworldwide.jpg
 -   HTTP Status: `201: created`
 
 ```json
-{
-  "id": "4n5pxq24kpiob12og9",
-  "title": "My Time Management Crisis",
-  "body": "It's been two weeks now, after so much consumption of time management books",
-  "feature_image": "https://imageworldwide.jpg",
-  "status": 1
+{ 
+  "statusCode": 201,
+  "status": "success",
+  "data": {
+    "id": 1,
+    "title": "My Time Management Crisis",
+    "body": "It's been two weeks now, after so much consumption of time management books",
+    "created_at": "2018-3-7",
+    "users_id": 1
+  },
+  "message": "successfully created the diary entry"
 }
 ```
 
 #### GET HTTP Response
+-   header: `Authorization', 'Bearer token'`
 -   `GET` /api/v1/entries
 -   HTTP Status: `200: OK`
 
 ```json
 [
-    {
-        "id": "4n5pxq24kpiob12og9",
-        "title": "My Time Management Crisis",
-        "body": "It's been two weeks now, after so much consumption of time management books",
-        "feature_image": "https://imageworldwide.jpg",
-        "status": 1
-    }
+  { 
+    "statusCode": 200,
+    "status": "success",
+    "data": {
+      "id": 1,
+      "title": "My Time Management Crisis",
+      "body": "It's been two weeks now, after so much consumption of time management books",
+      "created_at": "2018-3-7",
+      "users_id": 1
+    },
+    "message": "successfully get all diary entries"
+  }
 ]
 ```
 
 #### GET HTTP Response
+-   header: `Authorization', 'Bearer token'`
 -   `GET` /api/v1/entries/:id
 -   HTTP Status: `200: OK`
 
 ```json
-{
-    "id": "4n5pxq24kpiob12og9",
+{ 
+  "statusCode": 200,
+  "status": "success",
+  "data": {
+    "id": 1,
     "title": "My Time Management Crisis",
     "body": "It's been two weeks now, after so much consumption of time management books",
-    "feature_image": "https://imageworldwide.jpg",
-    "status": 1
+    "created_at": "2018-3-7",
+    "users_id": 1
+  },
+  "message": "successfully get one diary entry"
 }
 ```
 
 #### DELETE HTTP Response
+-   header: `Authorization', 'Bearer token'`
 -   `DELETE` /api/v1/entries/:id
--   HTTP Status: `204: N0 Content`
+-   HTTP Status: `200: OK`
 
 ```json
-Entry was deleted
+{ 
+  "statusCode": 200,
+  "status": "success",
+  "message": "Diary was deleted successfully!!!"
+}
 ```
 
 #### PUT HTTP Request
 -   `PUT` /api/v1/entries/:id
 -   INPUT:
-```x-form-url-encoded
+```x-form-url-encoded, header: 'Authorization', 'Bearer token'
 title: My Time Management Story
 body: It's been two weeks now, after so much consumption of time management books
-feature_image: https://imageworldwide.jpg
 ```
 
 #### PUT HTTP Response
@@ -118,12 +135,90 @@ feature_image: https://imageworldwide.jpg
 -   HTTP Status: `200: OK`
 -   JSON data
 ```json
-{
-  "id": "4n5pxq24kpiob12og9",
-  "title": "My Time Management Story",
-  "body": "It's been two weeks now, after so much consumption of time management books",
-  "feature_image": "https://imageworldwide.jpg",
-  "status": 1
+{ 
+  "statusCode": 200,
+  "status": "success",
+  "data": {
+    "id": 1,
+    "title": "My Time Management Story",
+    "body": "It's been two weeks now, after so much consumption of time management books",
+    "created_at": "2018-3-7",
+    "users_id": 1
+  },
+  "message": "successfully update the diary entry"
+}
+```
+
+- When Error Occurs
+-   HTTP Status: `The Status code [500]: Error Type [Server Error]`
+- For example error response for POST new diary entry.
+```json
+{ 
+  "statusCode": 500,
+  "status": "error",
+  "message": "There was a problem adding the diary to the database."
+}
+```
+
+
+- USER SIGNUP 
+#### POST HTTP Request
+-   `POST` /api/v1/users/signup
+-   INPUT:
+```x-form-url-encoded
+firstname: John
+lastname: Doe
+email: johndoe@example.com
+password: password123
+confirmPassword: password123
+```
+
+#### POST HTTP Response
+
+-   HTTP Status: `201: created`
+
+```json
+{ 
+  "statusCode": 201,
+  "status": "success",
+  "data": {
+    "id": 1,
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "johndoe@example.com",
+    "created_at": "2018-3-7"
+  },
+  "message": "Successfully signup",
+  "token": "eyJhbGciOiJIUzI.eyJpZCI6NjEs.ImZpciIsImVtY"
+}
+```
+
+- USER LOGIN
+#### POST HTTP Request
+-   `POST` /api/v1/users/login
+-   INPUT:
+```x-form-url-encoded
+email: johndoe@example.com
+password: password123
+```
+
+#### POST HTTP Response
+
+-   HTTP Status: `200: OK`
+
+```json
+{ 
+  "statusCode": 200,
+  "status": "success",
+  "data": {
+    "id": 1,
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "johndoe@example.com",
+    "created_at": "2018-3-7"
+  },
+  "message": "Successfully login",
+  "token": "eyJhbGciOiJIUzI.eyJpZCI6NjEs.ImZpciIsImVtY"
 }
 ```
 
