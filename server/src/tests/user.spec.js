@@ -52,6 +52,9 @@ describe('User', () => {
           expect(res).to.have.status(201);
           expect(res.body).to.be.header;
           expect(res.body).to.have.property('token').to.be.a('string');
+          expect(res.body.data).to.have.property('firstname').eql('victor');
+          expect(res.body.data).to.have.property('lastname').eql('onwuzor');
+          expect(res.body.data).to.have.property('email').eql('onwuzorvictor@outlook.com');
           expect(res.body).to.have.property('status').eql('success');
           expect(res.body).to.have.property('message').eql('Successfully signup');
           done();
@@ -74,6 +77,9 @@ describe('User', () => {
 
           expect(res).to.have.status(200);
           expect(res.body).to.be.header;
+          expect(res.body.data).to.have.property('firstname').eql('john');
+          expect(res.body.data).to.have.property('lastname').eql('doe');
+          expect(res.body.data).to.have.property('email').eql('johndoe@outlook.com');
           expect(res.body).to.have.property('token').to.be.a('string');
           expect(res.body).to.have.property('status').eql('success');
           expect(res.body).to.have.property('message').eql('Successfully login');

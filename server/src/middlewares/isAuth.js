@@ -11,6 +11,8 @@ import refactorUserData from '../helpers/refactorUserData';
  *
  * return boolean: true if valid or status code of specific error if not valid
  */
+/* eslint-disable consistent-return */
+/* eslint-disable prefer-destructuring */
 const isAuth = (req, res, next) => {
   let bearerToken;
   // get the req.header authorization token

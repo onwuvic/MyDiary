@@ -9,10 +9,8 @@ import jwt from 'jsonwebtoken';
  *
  * return a JsonWebToken string
  */
-const tokenGenerator = (object) => {
-  return jwt.sign(object, process.env.SECRET_KEY, {
-    expiresIn: process.env.TOKEN_EXPIRATION
-  });
-}
+const tokenGenerator = object => jwt.sign(object, process.env.SECRET_KEY, {
+  expiresIn: process.env.TOKEN_EXPIRATION
+});
 
 export default tokenGenerator;

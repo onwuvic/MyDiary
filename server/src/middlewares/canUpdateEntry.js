@@ -1,4 +1,4 @@
-import db from '../database';
+// import db from '../database';
 
 /**
  * A function that check if user can update an entry.
@@ -10,14 +10,14 @@ import db from '../database';
  *
  * return status: 400 [bad request] 'User already exist' or move to next middleware
  */
-const canUpdateEntry = (req, res, next) => {
-  const entryId = req.params.id;
+// const canUpdateEntry = (req, res, next) => {
+//   const entryId = req.params.id;
 
-  db.one('SELECT created_At FROM entries WHERE id = $1', entryId)
-    .then((createdAt) => {
+//   db.one('SELECT created_At FROM entries WHERE id = $1', entryId)
+//     .then((createdAt) => {
 
-    })
-    .catch(() => next());
-};
+//     })
+//     .catch(() => next());
+// };
 
-export default doesUserExist;
+// export default canUpdateEntry;
