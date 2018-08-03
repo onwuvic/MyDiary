@@ -4,7 +4,8 @@ import tokenGenerator from '../helpers/jwt';
 import refactorUserData from '../helpers/refactorUserData';
 
 
-/**
+/*import { DH_CHECK_P_NOT_PRIME } from 'constants';
+*
  * A function to sign up new users
  * @params req: request [user input request],
  * @params res: response [programs reponses]
@@ -17,6 +18,10 @@ export const signUp = (req, res) => {
     firstname, lastname, email, password
   } = req.body;
 
+  firstname.trim();
+  lastname.trim();
+  email.trim();
+
   /* eslint-disable no-template-curly-in-string */
   db.one('INSERT INTO users(firstname, lastname, email, password)'
   + 'VALUES(${firstname}, ${lastname}, ${email}, ${password}) RETURNING *',
@@ -27,7 +32,6 @@ export const signUp = (req, res) => {
       const userData = refactorUserData(user);
       const token = tokenGenerator(userData);
       return res.status(201).json({
-        statusCode: 201,
         status: 'success',
         data: userData,
         message: 'Successfully signup',
@@ -35,7 +39,6 @@ export const signUp = (req, res) => {
       });
     })
     .catch(() => res.status(500).json({
-      statusCode: 500,
       status: 'error',
       message: 'Can not sign up now. Try again.'
     }));
@@ -63,7 +66,6 @@ export const logIn = (req, res) => {
           .then((matched) => {
             if (!matched) {
               return res.status(400).json({
-                statusCode: 400,
                 status: 'error',
                 message: 'Invalid email and password.'
               });
@@ -72,7 +74,6 @@ export const logIn = (req, res) => {
           .then(() => {
             const token = tokenGenerator(refactorUser);
             return res.status(200).json({
-              statusCode: 200,
               status: 'success',
               data: refactorUser,
               message: 'Successfully login',
@@ -80,14 +81,12 @@ export const logIn = (req, res) => {
             });
           })
           .catch(() => res.status(505).json({
-            statusCode: 505,
             status: 'error',
             message: 'Can not resolve password'
           }));
       }
     })
     .catch(() => res.status(404).send({
-      statusCode: 404,
       status: 'error',
       message: 'User not found, please sign up.'
     }));

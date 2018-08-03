@@ -3,9 +3,6 @@ import * as promise from 'bluebird';
 import pg from 'pg-promise';
 import config from './config';
 
-/* eslint-disable no-console */
-console.log(config.database.url);
-
 // Initialization Options
 const initOptions = { promiseLib: promise };
 

@@ -54,7 +54,6 @@ body: It's been two weeks now, after so much consumption of time management book
 
 ```json
 { 
-  "statusCode": 201,
   "status": "success",
   "data": {
     "id": 1,
@@ -75,7 +74,6 @@ body: It's been two weeks now, after so much consumption of time management book
 ```json
 [
   { 
-    "statusCode": 200,
     "status": "success",
     "data": {
       "id": 1,
@@ -96,7 +94,6 @@ body: It's been two weeks now, after so much consumption of time management book
 
 ```json
 { 
-  "statusCode": 200,
   "status": "success",
   "data": {
     "id": 1,
@@ -116,7 +113,6 @@ body: It's been two weeks now, after so much consumption of time management book
 
 ```json
 { 
-  "statusCode": 200,
   "status": "success",
   "message": "Diary was deleted successfully!!!"
 }
@@ -136,7 +132,6 @@ body: It's been two weeks now, after so much consumption of time management book
 -   JSON data
 ```json
 { 
-  "statusCode": 200,
   "status": "success",
   "data": {
     "id": 1,
@@ -154,7 +149,6 @@ body: It's been two weeks now, after so much consumption of time management book
 - For example error response for POST new diary entry.
 ```json
 { 
-  "statusCode": 500,
   "status": "error",
   "message": "There was a problem adding the diary to the database."
 }
@@ -179,7 +173,6 @@ confirmPassword: password123
 
 ```json
 { 
-  "statusCode": 201,
   "status": "success",
   "data": {
     "id": 1,
@@ -208,7 +201,6 @@ password: password123
 
 ```json
 { 
-  "statusCode": 200,
   "status": "success",
   "data": {
     "id": 1,
