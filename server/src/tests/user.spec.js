@@ -33,7 +33,7 @@ describe('User', () => {
   });
 
   /* eslint-disable no-unused-expressions */
-  describe('Create new user', () => {
+  describe('Create new user controller', () => {
     const newUserCreate = {
       firstname: 'victor',
       lastname: 'onwuzor',
@@ -62,7 +62,7 @@ describe('User', () => {
     });
   });
 
-  describe('Login users', () => {
+  describe('Login users controller', () => {
     const loginUser = {
       email: newUser.email,
       password: newUser.password

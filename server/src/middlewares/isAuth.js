@@ -26,7 +26,6 @@ const isAuth = (req, res, next) => {
     // check if the bearer match that of the bearer specified in our env
     if (bearer[0] !== process.env.BEARER) {
       return res.status(400).json({
-        statusCode: 400,
         status: 'error',
         message: 'bearer not understood'
       });
@@ -37,13 +36,11 @@ const isAuth = (req, res, next) => {
       if (err) {
         if (err.name === 'TokenExpiredError') {
           return res.status(400).json({
-            statusCode: 400,
             status: 'error',
             message: 'Session timed out, please login again'
           });
         }
         return res.status(400).json({
-          statusCode: 400,
           status: 'error',
           message: 'Error authenticating, please login again'
         });
@@ -61,14 +58,12 @@ const isAuth = (req, res, next) => {
           return next();
         })
         .catch(() => res.status(404).json({
-          statusCode: 404,
           status: 'error',
           message: 'User not found'
         }));
     });
   } else {
     return res.status(400).json({
-      statusCode: 400,
       status: 'error',
       message: 'No token provided'
     });
