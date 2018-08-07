@@ -132,7 +132,6 @@ export const isLoginEmpty = (req, res, next) => {
   return next();
 };
 
-/**
  * A function that check if user password is less than six character.
  *
  * @param {Request: user input request} req

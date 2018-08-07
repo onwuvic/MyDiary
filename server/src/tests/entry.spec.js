@@ -151,7 +151,7 @@ describe('Entries', () => {
             if (error) done();
 
             entryData = res.body.data;
-
+          
             expect(res).to.have.status(201);
             expect(res).to.be.json;
             expect(res.body.data).to.have.property('title').eql('play of all');
@@ -308,7 +308,6 @@ describe('Entries', () => {
           });
       });
     });
-
   });
 
   describe('Update one diary entry controller', () => {
@@ -429,6 +428,7 @@ describe('Entries', () => {
 
 
   describe('Delete one diary entry controller', () => {
+
     describe('When given invalid parameter', () => {
       it('should NOT DELETE entry by id when there is no token', (done) => {
         chai.request(app)
