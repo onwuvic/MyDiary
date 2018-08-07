@@ -429,16 +429,78 @@ describe('Entries', () => {
 
 
   describe('Delete one diary entry controller', () => {
-    it('should DELETE only ONE entry by id', (done) => {
-      chai.request(app)
-        .delete(`${baseUrl}/entries/${entryData.id}`)
-        .set('Authorization', `Bearer ${jwt.token}`)
-        .end((error, res) => {
-          if (error) done();
+    describe('When given invalid parameter', () => {
+      it('should NOT DELETE entry by id when there is no token', (done) => {
+        chai.request(app)
+          .delete(`${baseUrl}/entries/${entryData.id}`)
+          .end((error, res) => {
+            if (error) done();
 
-          expect(res).to.have.status(200);
-          done();
-        });
+            expect(res).to.have.status(400);
+            expect(res).to.be.json;
+            expect(res.body).to.have.property('status').eql('error');
+            expect(res.body).to.have.property('message').eql('No token provided');
+            done();
+          });
+      });
+
+      it('should NOT DELETE entry by id when token bearer is wrong', (done) => {
+        chai.request(app)
+          .delete(`${baseUrl}/entries/${entryData.id}`)
+          .set('Authorization', `Bear ${jwt.token}`)
+          .end((error, res) => {
+            if (error) done();
+
+            expect(res).to.have.status(400);
+            expect(res).to.be.json;
+            expect(res.body).to.have.property('status').eql('error');
+            expect(res.body).to.have.property('message').eql('bearer not understood');
+            done();
+          });
+      });
+
+      it('should NOT DELETE entry by id when token is wrong', (done) => {
+        chai.request(app)
+          .delete(`${baseUrl}/entries/${entryData.id}`)
+          .set('Authorization', `Bearer ueue783839.8383ijdd.8djdjn`)
+          .end((error, res) => {
+            if (error) done();
+
+            expect(res).to.have.status(400);
+            expect(res).to.be.json;
+            expect(res.body).to.have.property('status').eql('error');
+            expect(res.body).to.have.property('message').eql('Error authenticating, please login again');
+            done();
+          });
+      });
+
+      it('should NOT DELETE entry by id when id is invalid', (done) => {
+        chai.request(app)
+          .delete(`${baseUrl}/entries/50`)
+          .set('Authorization', `Bearer ${jwt.token}`)
+          .end((error, res) => {
+            if (error) done();
+
+            expect(res).to.have.status(404);
+            expect(res.body).to.have.property('status').to.equal('error');
+            expect(res.body).to.have.property('message').to.equal('None of your diaries was found with this ID');
+            done();
+          });
+      });
+    });
+
+    describe('When given valid input', () => {
+      it('should DELETE only ONE entry by id', (done) => {
+        chai.request(app)
+          .delete(`${baseUrl}/entries/${entryData.id}`)
+          .set('Authorization', `Bearer ${jwt.token}`)
+          .end((error, res) => {
+            if (error) done();
+
+            expect(res).to.have.status(200);
+            done();
+          });
+      });
     });
   });
 });

@@ -86,7 +86,7 @@ export const findByIdAndRemove = (req, res) => {
       status: 'success',
       message: 'Diary was deleted successfully!!!'
     }))
-    .catch(() => res.status(500).json({
+    .catch(() => res.status(404).json({
       status: 'error',
       message: 'None of your diaries was found with this ID'
     }));

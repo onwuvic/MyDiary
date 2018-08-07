@@ -133,29 +133,6 @@ export const isLoginEmpty = (req, res, next) => {
 };
 
 /**
- * A function that check if the password and confirm password are the same.
- *
- * @param {Request: user input request} req
- * @param {Response: programs reponses} res
- * @param {Next: move on to the next middleware } next
- *
- * return boolean: true if valid move to the next middleware
- *  else
- * return status code 400 with 'Password do not match'
- */
-export const isPasswordEqual = (req, res, next) => {
-  const { password, confirmPassword } = req.body;
-
-  if (password === confirmPassword) {
-    return next();
-  }
-  return res.status(400).json({
-    status: 'error',
-    message: 'Password do not match'
-  });
-};
-
-/**
  * A function that check if user password is less than six character.
  *
  * @param {Request: user input request} req

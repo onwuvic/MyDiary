@@ -6,7 +6,7 @@ import {
 import isAuth from '../middlewares/isAuth';
 import {
   isAnyEmpty,
-  isEmail, isPasswordEqual,
+  isEmail,
   doesUserExist, hashPassword,
   isLoginEmpty, isDiaryContentEmpty,
   isPasswordStrong, isNameLengthLess, isDiaryLengthLess
@@ -24,7 +24,6 @@ router.post('/users/signup',
   isNameLengthLess,
   isEmail,
   isPasswordStrong,
-  isPasswordEqual,
   doesUserExist,
   hashPassword,
   signUp);
