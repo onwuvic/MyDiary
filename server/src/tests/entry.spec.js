@@ -49,7 +49,7 @@ describe('Entries', () => {
       const lessThanSixCharacter = {
         title: 'long',
         body: 'long',
-      }
+      };
 
       const correctEntry = {
         title: 'play of all',
@@ -123,7 +123,7 @@ describe('Entries', () => {
         chai.request(app)
           .post(`${baseUrl}/entries`)
           .send(correctEntry)
-          .set('Authorization', `Bearer ueue783839.8383ijdd.8djdjn`)
+          .set('Authorization', 'Bearer ueue783839.8383ijdd.8djdjn')
           .end((error, res) => {
             if (error) done();
 
@@ -197,7 +197,7 @@ describe('Entries', () => {
       it('should NOT GET all diary entries when token is wrong', (done) => {
         chai.request(app)
           .get(`${baseUrl}/entries`)
-          .set('Authorization', `Bearer ueue783839.8383ijdd.8djdjn`)
+          .set('Authorization', 'Bearer ueue783839.8383ijdd.8djdjn')
           .end((error, res) => {
             if (error) done();
 
@@ -264,7 +264,7 @@ describe('Entries', () => {
       it('should NOT GET ONE entry by id when token is wrong', (done) => {
         chai.request(app)
           .get(`${baseUrl}/entries/${entryData.id}`)
-          .set('Authorization', `Bearer ueue783839.8383ijdd.8djdjn`)
+          .set('Authorization', 'Bearer ueue783839.8383ijdd.8djdjn')
           .end((error, res) => {
             if (error) done();
 
@@ -308,7 +308,6 @@ describe('Entries', () => {
           });
       });
     });
-
   });
 
   describe('Update one diary entry controller', () => {
@@ -326,7 +325,7 @@ describe('Entries', () => {
       const lessThanSixCharacter = {
         title: 'long',
         body: 'long',
-      }
+      };
 
       it('should NOT UPDATE an existing entries given the entry ID when entry fields are empty', (done) => {
         chai.request(app)
@@ -395,7 +394,7 @@ describe('Entries', () => {
         chai.request(app)
           .put(`${baseUrl}/entries/${entryData.id}`)
           .send(updatedEntry)
-          .set('Authorization', `Bearer ueue783839.8383ijdd.8djdjn`)
+          .set('Authorization', 'Bearer ueue783839.8383ijdd.8djdjn')
           .end((error, res) => {
             if (error) done();
 
@@ -462,7 +461,7 @@ describe('Entries', () => {
       it('should NOT DELETE entry by id when token is wrong', (done) => {
         chai.request(app)
           .delete(`${baseUrl}/entries/${entryData.id}`)
-          .set('Authorization', `Bearer ueue783839.8383ijdd.8djdjn`)
+          .set('Authorization', 'Bearer ueue783839.8383ijdd.8djdjn')
           .end((error, res) => {
             if (error) done();
 

@@ -4,8 +4,7 @@ import tokenGenerator from '../helpers/jwt';
 import refactorUserData from '../helpers/refactorUserData';
 
 
-/*import { DH_CHECK_P_NOT_PRIME } from 'constants';
-*
+/**
  * A function to sign up new users
  * @params req: request [user input request],
  * @params res: response [programs reponses]

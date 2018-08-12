@@ -48,7 +48,7 @@ describe('User', () => {
       email: 'onwuzorvictor@outlook.com',
       password: 'password123',
       confirmPassword: 'password123'
-    }
+    };
 
     const oneWordUserInput = {
       firstname: 'e',
@@ -56,7 +56,7 @@ describe('User', () => {
       email: 'onwuzorvictor@outlook.com',
       password: 'password123',
       confirmPassword: 'password123'
-    }
+    };
 
     const lessPassword = {
       firstname: 'victor',
@@ -64,7 +64,7 @@ describe('User', () => {
       email: 'onwuzorvictor@outlook.com',
       password: 'pass',
       confirmPassword: 'pass'
-    }
+    };
 
     const wrongEmail = {
       firstname: 'victor',
@@ -72,10 +72,10 @@ describe('User', () => {
       email: 'onwuzorvictoroutlook.com',
       password: 'password123',
       confirmPassword: 'password123'
-    }
+    };
 
     describe('When given invalid input', () => {
-      it('should NOT CREATE users when any of the input field is empty', () => {
+      it('should NOT CREATE users when any of the input field is empty', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/signup`)
           .send(emptyUserInput)
@@ -85,6 +85,7 @@ describe('User', () => {
             expect(res).to.have.status(400);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('All fields are required');
+            done();
           });
       });
 
@@ -98,10 +99,11 @@ describe('User', () => {
             expect(res).to.have.status(400);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('First and Last Name should be more than one character');
+            done();
           });
       });
 
-      it('should NOT CREATE users when the email is not correct', () => {
+      it('should NOT CREATE users when the email is not correct', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/signup`)
           .send(wrongEmail)
@@ -111,10 +113,11 @@ describe('User', () => {
             expect(res).to.have.status(400);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('Invalid Email Address');
+            done();
           });
       });
 
-      it('should NOT CREATE users when the password is less than six character', () => {
+      it('should NOT CREATE users when the password is less than six character', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/signup`)
           .send(lessPassword)
@@ -124,6 +127,7 @@ describe('User', () => {
             expect(res).to.have.status(400);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('Password is less than six character');
+            done();
           });
       });
     });
@@ -148,7 +152,7 @@ describe('User', () => {
           });
       });
 
-      it('should NOT CREATE users when the users already exist', () => {
+      it('should NOT CREATE users when the users already exist', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/signup`)
           .send(newUserCreate)
@@ -158,6 +162,7 @@ describe('User', () => {
             expect(res).to.have.status(400);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('User already exist');
+            done();
           });
       });
     });
@@ -185,7 +190,7 @@ describe('User', () => {
     };
 
     describe('When given an invalid input', () => {
-      it('should NOT LOG IN users when the input fields are empty', () => {
+      it('should NOT LOG IN users when the input fields are empty', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/login`)
           .send(loginEmptyUser)
@@ -195,10 +200,11 @@ describe('User', () => {
             expect(res).to.have.status(422);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('You must provide an email and a password.');
+            done();
           });
       });
 
-      it('should NOT LOG IN users when email address is not correct', () => {
+      it('should NOT LOG IN users when email address is not correct', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/login`)
           .send(wrongUserEmail)
@@ -208,10 +214,11 @@ describe('User', () => {
             expect(res).to.have.status(404);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('User not found, please sign up.');
+            done();
           });
       });
 
-      it('should NOT LOG IN users when password is not correct', () => {
+      it('should NOT LOG IN users when password is not correct', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/login`)
           .send(wrongUserPassword)
@@ -221,6 +228,7 @@ describe('User', () => {
             expect(res).to.have.status(400);
             expect(res.body).to.have.property('status').to.equal('error');
             expect(res.body).to.have.property('message').to.equal('Invalid email and password.');
+            done();
           });
       });
     });
@@ -245,6 +253,5 @@ describe('User', () => {
           });
       });
     });
-
   });
 });
