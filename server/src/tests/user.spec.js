@@ -89,7 +89,7 @@ describe('User', () => {
           });
       });
 
-      it('should NOT CREATE users when any of the first and last name is less than two words', () => {
+      it('should NOT CREATE users when any of the first and last name is less than two words', (done) => {
         chai.request(app)
           .post(`${baseUrl}/users/signup`)
           .send(oneWordUserInput)
