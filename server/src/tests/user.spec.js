@@ -26,10 +26,10 @@ describe('User', () => {
       });
   });
 
-  after((done) => {
-    db.any('TRUNCATE  $1:name, $2:name CASCADE', ['users', 'entries'])
-      .then(() => done())
-      .catch(() => done());
+  after(() => {
+    db.none('TRUNCATE  $1:name, $2:name CASCADE', ['users', 'entries'])
+      .then(() => {})
+      .catch(() => {});
   });
 
   /* eslint-disable no-unused-expressions */
@@ -239,7 +239,7 @@ describe('User', () => {
           .post(`${baseUrl}/users/login`)
           .send(loginUser)
           .end((error, res) => {
-            if (error) done();
+            if (error) done(error);
 
             expect(res).to.have.status(200);
             expect(res.body).to.be.header;
