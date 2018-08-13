@@ -30,7 +30,9 @@ This application was developed using [ExpressJS](https://expressjs.com/). [Mocha
 * Clone the repository by entering the command `git clone https://github.com/onwuvic/MyDiary.git` in the terminal.
 * Navigate to the project folder using `cd MyDiary` on your terminal (or command prompt)
 * After cloning, install the application's dependencies with the command `npm install`.
-* Rename .env.sample file to .env fill all the parameters
+* Rename .env.sample file to .env fill all the parameters.
+* Setup a Postgres database for development and for testing.
+* Use the sql files in `server/src/migrations` to create entries and users tables in the database you've created.
 * After this, you can then start the server with the command: `npm run dev`.
 
 ### Testing
@@ -38,7 +40,7 @@ To ensure that your installation is successful you'll need to run tests.
 The command: `npm run test` makes this possible. Other useful command you can run e.g linting can be found in the package.json file under "scripts"
 
 ## API Documentation
-The API only has one endpoint which is the `/api/v1/entries` endpoint for saving entries in memory without persistent for now. The endpoint works with the HTTP verbs: `POST`, `GET`, `PUT`, `DELETE`.
+The API for diary entry resources `/api/v1/entries`. The endpoint works with the HTTP verbs: `POST`, `GET`, `PUT`, `DELETE`. `/api/v1/users/login` and `/api/v1/users/signup` for Log In and Signing up users.
 
 #### POST HTTP Request
 -   `POST` /api/v1/entries
@@ -53,8 +55,7 @@ body: It's been two weeks now, after so much consumption of time management book
 -   HTTP Status: `201: created`
 
 ```json
-{ 
-  "status": "success",
+{
   "data": {
     "id": 1,
     "title": "My Time Management Crisis",
@@ -73,8 +74,7 @@ body: It's been two weeks now, after so much consumption of time management book
 
 ```json
 [
-  { 
-    "status": "success",
+  {
     "data": {
       "id": 1,
       "title": "My Time Management Crisis",
@@ -93,8 +93,7 @@ body: It's been two weeks now, after so much consumption of time management book
 -   HTTP Status: `200: OK`
 
 ```json
-{ 
-  "status": "success",
+{
   "data": {
     "id": 1,
     "title": "My Time Management Crisis",
@@ -112,8 +111,7 @@ body: It's been two weeks now, after so much consumption of time management book
 -   HTTP Status: `200: OK`
 
 ```json
-{ 
-  "status": "success",
+{
   "message": "Diary was deleted successfully!!!"
 }
 ```
@@ -131,8 +129,7 @@ body: It's been two weeks now, after so much consumption of time management book
 -   HTTP Status: `200: OK`
 -   JSON data
 ```json
-{ 
-  "status": "success",
+{
   "data": {
     "id": 1,
     "title": "My Time Management Story",
@@ -148,8 +145,7 @@ body: It's been two weeks now, after so much consumption of time management book
 -   HTTP Status: `The Status code [500]: Error Type [Server Error]`
 - For example error response for POST new diary entry.
 ```json
-{ 
-  "status": "error",
+{
   "message": "There was a problem adding the diary to the database."
 }
 ```
@@ -172,8 +168,7 @@ confirmPassword: password123
 -   HTTP Status: `201: created`
 
 ```json
-{ 
-  "status": "success",
+{
   "data": {
     "id": 1,
     "firstname": "John",
@@ -200,8 +195,7 @@ password: password123
 -   HTTP Status: `200: OK`
 
 ```json
-{ 
-  "status": "success",
+{
   "data": {
     "id": 1,
     "firstname": "John",
