@@ -32,10 +32,10 @@ describe('Entries', () => {
       });
   });
 
-  after((done) => {
-    db.any('TRUNCATE  $1:name, $2:name CASCADE', ['users', 'entries'])
-      .then(() => done())
-      .catch(() => done());
+  after(() => {
+    db.none('TRUNCATE  $1:name, $2:name CASCADE', ['users', 'entries'])
+      .then(() => {})
+      .catch(() => {});
   });
 
   /* eslint-disable no-unused-expressions */

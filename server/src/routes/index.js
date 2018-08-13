@@ -37,10 +37,10 @@ router.get('/entries', isAuth, findAll);
 router.get('/entries/:id', isAuth, findOneById);
 
 // CREATE NEW ENTRY
-router.post('/entries', isDiaryContentEmpty, isDiaryLengthLess, isAuth, create);
+router.post('/entries', isAuth, isDiaryContentEmpty, isDiaryLengthLess, create);
 
 // UPDATE ONE ENTRY
-router.put('/entries/:id', isDiaryContentEmpty, isDiaryLengthLess, isAuth, findByIdAndUpdate);
+router.put('/entries/:id', isAuth, isDiaryContentEmpty, isDiaryLengthLess, findByIdAndUpdate);
 
 // DELETE ONE ENTRY
 router.delete('/entries/:id', isAuth, findByIdAndRemove);
