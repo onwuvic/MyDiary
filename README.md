@@ -40,7 +40,7 @@ To ensure that your installation is successful you'll need to run tests.
 The command: `npm run test` makes this possible. Other useful command you can run e.g linting can be found in the package.json file under "scripts"
 
 ## API Documentation
-The API for diary entry resources `/api/v1/entries`. The endpoint works with the HTTP verbs: `POST`, `GET`, `PUT`, `DELETE`. `/api/v1/users/login` and `/api/v1/users/signup` for Log In and Signing up users.
+The API for diary entry resources `/api/v1/entries`. The endpoint works with the HTTP verbs: `POST`, `GET`, `PUT`, `DELETE`. `/api/v1/users/login` and `/api/v1/users/signup` for Log In and Signing up users. Checkout [MyDiary Swagger documentation](https://tranquil-harbor-77266.herokuapp.com/api/v1/documentation).
 
 #### POST HTTP Request
 -   `POST` /api/v1/entries

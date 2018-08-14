@@ -1,0 +1,276 @@
+openapi: 3.0.0
+info:
+  version: 'v1'
+  title: 'MyDiary'
+  description: 'MyDiary is an online journal where users can pen down their thoughts and feelings.'
+  contact:
+    name: Onwuzor Victor
+    email: onwuzorvictor@outlook.com
+  license:
+    name: MIT
+
+servers:
+  - url: https://tranquil-harbor-77266.herokuapp.com/api/v1
+    description: Server URL
+
+paths:
+  /entries:
+    get:
+      description: Obtain all diary entries of a particular user from the database
+
+      responses:
+        200:
+          description: Successfully get all user diary entry
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Entries'
+
+    post:
+      description: Create new diary entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: My Time Management Crisis
+
+                body:
+                  type: string
+                  example: It's been two weeks now, after so much consumption of time management books
+
+      responses:
+        201:
+          description: Successfully created a new diary entry
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Entries'
+
+  /entries/{id}:
+    get:
+      description: Obtain specific user diary entry
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The diary entry ID
+          schema:
+            type: integer
+            example: 1
+
+      responses:
+        200:
+          description: Successfully get a specific diary entry with ID
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Entries'
+
+    put:
+      description: Update specific user diary entry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: My Time Management Crisis
+
+                body:
+                  type: string
+                  example: It's been two weeks now, after so much consumption of time management books
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The diary entry ID
+          schema:
+            type: integer
+            example: 1
+
+      responses:
+        200:
+          description: Successfully update a specific diary entry with ID
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Entries'
+
+
+    delete:
+      description: Delete specific user diary entry with ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: The diary entry ID
+          schema:
+            type: integer
+            example: 1
+
+      responses:
+          200:
+            description: Successfully delete a specific diary entry with ID
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Diary was deleted successfully!!!
+
+  /users/signup:
+    post:
+      description: Create new user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: string
+                  example: John
+
+                lastname:
+                  type: string
+                  example: Doe
+
+                email:
+                  type: string
+                  example: johndoe@example.com
+                  format: email
+
+                password:
+                  type: string
+                  example: password123
+                  format: password
+
+      responses:
+        201:
+          description: Successfully create a new user
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Users'
+
+  /users/login:
+    post:
+      description: Log In user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: johndoe@example.com
+                  format: email
+
+                password:
+                  type: string
+                  example: password123
+                  format: password
+
+      responses:
+        200:
+          description: Successfully logIn user
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Users'
+
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    UnauthorizedError:
+      description: No token provided
+
+  schemas:
+    Entries:
+      description: Model containing users diary entry
+      properties:
+        id:
+          type: integer
+          example: 1
+
+        title:
+          type: string
+          minLength: 6
+          example: My Time Management Crisis
+
+        body:
+          type: string
+          minLength: 6
+          example: It's been two weeks now, after so much consumption of time management books
+
+        created_at:
+          type: string
+          format: date-time
+          example: '2016-04-16T16:06:05Z'
+
+        users_id:
+          type: integer
+          example: 1
+
+    Users:
+      description: Model containing users
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+
+            firstname:
+              type: string
+              example: John
+
+            lastname:
+              type: string
+              example: Doe
+
+            email:
+              type: string
+              example: johndoe@example.com
+              format: email
+
+            created_at:
+              type: string
+              format: date-time
+              example: '2016-04-16T16:06:05Z'
+
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI.eyJpZCI6NjEs.ImZpciIsImVtY
+
+security:
+  - bearerAuth: []
