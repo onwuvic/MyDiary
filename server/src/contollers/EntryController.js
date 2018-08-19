@@ -17,12 +17,12 @@ export const create = (req, res) => {
   title.trim();
   body.trim();
 
-  const users_id = req.user.id;
+  const usersId = req.user.id;
 
   /* eslint-disable no-template-curly-in-string */
   db.one('INSERT INTO entries(title, body, users_id)'
   + 'VALUES(${title}, ${body}, ${users_id}) RETURNING *',
-  { title, body, users_id })
+  { title, body, users_id: usersId })
     .then(entry => res.status(201).json(entry))
     .catch(() => res.status(500).json({
       status: 'error',

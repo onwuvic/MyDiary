@@ -41,15 +41,17 @@ const server = http.createServer(app);
 /**
  * Event listener for HTTP server "error" event.
  */
-/* eslint-disable no-console */
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
   }
 
+  /* eslint-disable no-unused-vars */
   const bind = typeof port === 'string'
     ? `Pipe ${port}`
     : `Port ${port}`;
+
+  /* eslint-enable no-unused-vars */
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -63,7 +65,6 @@ function onError(error) {
       throw error;
   }
 }
-/* eslint-enable no-console */
 
 /**
  * Event listener for HTTP server "listening" event.

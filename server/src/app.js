@@ -17,7 +17,7 @@ app.use('/api/v1', indexRouter);
 app.use('/api/v1/documentation', express.static(name));
 
 
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(error.status || 500);
   res.json({
     status: 'error',
