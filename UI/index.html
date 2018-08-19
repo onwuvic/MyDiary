@@ -1,45 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Diary | Login</title>
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!-- HEADER -->
-    <div class="container-flex">
-        <header>
-            <div>
-                <!-- BRAND NAME -->
-                <div class="navbar-brand">
-                    <h2>MyDiary</h2>
-                </div>
-            </div>
-        </header>
-        <section class="form form-sm">
-            <h3 class="font-weight-normal text-center">Login</h3>
-            <div id="error-message" class="text-center error"></div>
-            <form id="loginForm">
-                <div>
-                    <label for="email" class="read-only">Email</label>
-                    <input type="email" id="email" placeholder="Email">
-                </div>
-                <div>
-                    <label for="password" class="read-only">Password</label>
-                    <input type="password" id="password" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-info">Login</button>
-            </form>
-            <p class="text-center">Don't have an account <a href="signup.html" class="login-color">Sign Up</a></p>
-        </section>
-        <footer>
-            <p>MyDiary &copy; 2018.</p>
-        </footer>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>MyDiary</title>
+        <link rel="stylesheet" href="public/css/all.css">
+        <link rel="stylesheet" href="public/css/style.css">
+    </head>
+    <body>
+        <main id="app">
 
-    <script src="app/login.js"></script>
-</body>
+        </main>
+
+        <script src="public/javascript/mydiary.js"></script>
+        <script src="app/lib/Api.js"></script>
+        <script src="app/lib/App.js"></script>
+        <script src="app/lib/Router.js"></script>
+        <script src="app/templates/template.js"></script>
+        <script src="app/main.js"></script>
+        <script src="app/components/login.js"></script>
+        <script src="app/components/signup.js"></script>
+        <script src="app/components/diaries.js"></script>
+    </body>
 </html>

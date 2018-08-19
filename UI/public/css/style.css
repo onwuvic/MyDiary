@@ -472,6 +472,10 @@ select {
     display: none;
 }
 
+.spinner {
+    display: none;
+}
+
 /* Forms */
 .form {
     width: 100%;
