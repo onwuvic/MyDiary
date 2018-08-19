@@ -31,9 +31,7 @@ export const signUp = (req, res) => {
       const userData = refactorUserData(user);
       const token = tokenGenerator(userData);
       return res.status(201).json({
-        status: 'success',
         data: userData,
-        message: 'Successfully signup',
         token
       });
     })
@@ -73,9 +71,7 @@ export const logIn = (req, res) => {
           .then(() => {
             const token = tokenGenerator(refactorUser);
             return res.status(200).json({
-              status: 'success',
               data: refactorUser,
-              message: 'Successfully login',
               token
             });
           })

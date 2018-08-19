@@ -150,12 +150,12 @@ describe('Entries', () => {
           .end((error, res) => {
             if (error) done();
 
-            entryData = res.body.data;
+            entryData = res.body;
 
             expect(res).to.have.status(201);
             expect(res).to.be.json;
-            expect(res.body.data).to.have.property('title').eql('play of all');
-            expect(res.body.data).to.have.property('body').eql('He plays all time');
+            expect(res.body).to.have.property('title').eql('play of all');
+            expect(res.body).to.have.property('body').eql('He plays all time');
             done();
           });
       });
@@ -219,10 +219,8 @@ describe('Entries', () => {
             if (error) done();
 
             expect(res).to.have.status(200);
-            expect(res.body.data).to.be.an('array');
+            expect(res.body).to.be.an('array');
             expect(res).to.be.json;
-            expect(res.body).to.have.property('status').eql('success');
-            expect(res.body).to.have.property('message').eql('successfully fetch all diary entries');
             done();
           });
       });
@@ -300,10 +298,10 @@ describe('Entries', () => {
             if (error) done();
 
             expect(res).to.have.status(200);
-            expect(res.body.data).to.have.property('title').to.equal(entryData.title);
-            expect(res.body.data).to.have.property('body').to.equal(entryData.body);
-            expect(res.body.data).to.have.property('id').eql(entryData.id);
-            expect(res.body.data).to.have.property('users_id').eql(entryData.users_id);
+            expect(res.body).to.have.property('title').to.equal(entryData.title);
+            expect(res.body).to.have.property('body').to.equal(entryData.body);
+            expect(res.body).to.have.property('id').eql(entryData.id);
+            expect(res.body).to.have.property('users_id').eql(entryData.users_id);
             done();
           });
       });
@@ -417,9 +415,8 @@ describe('Entries', () => {
             if (error) done();
 
             expect(res).to.have.status(200);
-            expect(res.body.data).to.have.property('title').to.equal('we rocckkker');
-            expect(res.body.data).to.have.property('body').eql('He plays all love');
-            expect(res.body.status).eql('success');
+            expect(res.body).to.have.property('title').to.equal('we rocckkker');
+            expect(res.body).to.have.property('body').eql('He plays all love');
             done();
           });
       });

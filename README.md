@@ -56,14 +56,11 @@ body: It's been two weeks now, after so much consumption of time management book
 
 ```json
 {
-  "data": {
-    "id": 1,
-    "title": "My Time Management Crisis",
-    "body": "It's been two weeks now, after so much consumption of time management books",
-    "created_at": "2018-3-7",
-    "users_id": 1
-  },
-  "message": "successfully created the diary entry"
+  "id": 1,
+  "title": "My Time Management Crisis",
+  "body": "It's been two weeks now, after so much consumption of time management books",
+  "created_at": "2018-3-7",
+  "users_id": 1
 }
 ```
 
@@ -75,14 +72,11 @@ body: It's been two weeks now, after so much consumption of time management book
 ```json
 [
   {
-    "data": {
-      "id": 1,
-      "title": "My Time Management Crisis",
-      "body": "It's been two weeks now, after so much consumption of time management books",
-      "created_at": "2018-3-7",
-      "users_id": 1
-    },
-    "message": "successfully get all diary entries"
+    "id": 1,
+    "title": "My Time Management Crisis",
+    "body": "It's been two weeks now, after so much consumption of time management books",
+    "created_at": "2018-3-7",
+    "users_id": 1
   }
 ]
 ```
@@ -94,14 +88,11 @@ body: It's been two weeks now, after so much consumption of time management book
 
 ```json
 {
-  "data": {
-    "id": 1,
-    "title": "My Time Management Crisis",
-    "body": "It's been two weeks now, after so much consumption of time management books",
-    "created_at": "2018-3-7",
-    "users_id": 1
-  },
-  "message": "successfully get one diary entry"
+  "id": 1,
+  "title": "My Time Management Crisis",
+  "body": "It's been two weeks now, after so much consumption of time management books",
+  "created_at": "2018-3-7",
+  "users_id": 1
 }
 ```
 
@@ -130,14 +121,11 @@ body: It's been two weeks now, after so much consumption of time management book
 -   JSON data
 ```json
 {
-  "data": {
-    "id": 1,
-    "title": "My Time Management Story",
-    "body": "It's been two weeks now, after so much consumption of time management books",
-    "created_at": "2018-3-7",
-    "users_id": 1
-  },
-  "message": "successfully update the diary entry"
+  "id": 1,
+  "title": "My Time Management Story",
+  "body": "It's been two weeks now, after so much consumption of time management books",
+  "created_at": "2018-3-7",
+  "users_id": 1
 }
 ```
 
@@ -146,6 +134,7 @@ body: It's been two weeks now, after so much consumption of time management book
 - For example error response for POST new diary entry.
 ```json
 {
+  "status": "error",
   "message": "There was a problem adding the diary to the database."
 }
 ```
@@ -176,7 +165,6 @@ confirmPassword: password123
     "email": "johndoe@example.com",
     "created_at": "2018-3-7"
   },
-  "message": "Successfully signup",
   "token": "eyJhbGciOiJIUzI.eyJpZCI6NjEs.ImZpciIsImVtY"
 }
 ```
@@ -203,7 +191,6 @@ password: password123
     "email": "johndoe@example.com",
     "created_at": "2018-3-7"
   },
-  "message": "Successfully login",
   "token": "eyJhbGciOiJIUzI.eyJpZCI6NjEs.ImZpciIsImVtY"
 }
 ```
