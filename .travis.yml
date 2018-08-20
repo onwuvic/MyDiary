@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "8.11.1"
+addons:
+  - postgresql: "9.4"
+before_script:
+  - psql -c 'create database test;' -U postgres
+  - psql -f server/src/migrations/users.sql -U postgres
+  - psql -f server/src/migrations/entries.sql -U postgres
+cache:
+  directories:
+    - "node_modules"
+branches:
+  only:
+    - master
+    - develop
+after_success:
+  - npm run coverage
