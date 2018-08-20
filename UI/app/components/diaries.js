@@ -37,8 +37,9 @@
       this.loading = true;
   
       api.getAllDiaries()
-        .then(data => {
-            this.diaries = data;
+        .then(diaries => {
+            console.log(diaries);
+            this.diaries = diaries;
             this.loading = false;
         });
     }

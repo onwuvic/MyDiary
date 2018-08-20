@@ -32,6 +32,7 @@
 
             api.signIn(email, password)
                 .then((data) => {
+                    console.log(data);
                     this.loading = false;
                     button.style.display = 'block';
                     loader.style.display = 'none';
@@ -46,7 +47,7 @@
         }
 
         if(loginForm) {
-            loginForm.addEventListener('submit', logIn);
+            loginForm.addEventListener('submit', logIn, false);
         }
     }
 })();

@@ -1,6 +1,6 @@
 (function () {
     app.addComponent({
-        name: 'signup',
+        name: 'newDiary',
         model: {
             loading: false
         },
@@ -9,21 +9,30 @@
     });
 
     function view() {
-        return template.signupTemplate;
+        return `
+            <header>
+                <div class="container container-fluid navbar-grid">
+                    ${template.navBarTemplate}
+                    ${template.sideNavBarTemplate}
+                </div>
+            </header>
+            <section id="main" class="container">
+                ${template.createDiaryForm}
+            </section>
+            ${template.footerTemplate}
+        `;
     }
 
     function controller() {
-        const signupForm = document.getElementById('signupForm');
+        const createDiaryForm = document.getElementById('createDiaryForm');
         const errorMessage = document.getElementById('error-message');
         const button = document.getElementById('button');
         const loader = document.getElementById('loader');
 
-        function createNewUser(e) {
+        function createDiary(e) {
             e.preventDefault();
-            const firstname = document.getElementById('firstname').value;
-            const lastname = document.getElementById('lastname').value
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const title = document.getElementById('title').value;
+            const body = document.getElementById('body').value;
 
             this.loading = true;
 
@@ -32,9 +41,8 @@
                 loader.style.display = 'block';
             }
 
-            api.signUp(firstname, lastname, email, password)
+            api.create(title, body)
                 .then((data) => {
-                    console.log(data);
                     this.loading = false;
                     button.style.display = 'block';
                     loader.style.display = 'none';
@@ -42,14 +50,13 @@
                         errorMessage.style.display = 'block';
                         errorMessage.textContent = data.message;
                     } else {
-                        window.localStorage.setItem("token", data.token);
                         window.location.replace('#/diary');
                     }
                 });
         }
 
-        if(signupForm) {
-            signupForm.addEventListener('submit', createNewUser);
+        if(createDiaryForm) {
+            createDiaryForm.addEventListener('submit', createDiary);
         }
     }
 })();

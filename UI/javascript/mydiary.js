@@ -35,11 +35,11 @@ function display() {
 }
 
 if (close) {
-    close.addEventListener('click', closeSideMenu, false);
+    close.addEventListener('click', closeSideMenu);
 }
 
 if (open) {
-    open.addEventListener('click', openSideMenu, false); 
+    open.addEventListener('click', openSideMenu); 
 }
  
 if (moreInformation) {

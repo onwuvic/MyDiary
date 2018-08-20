@@ -149,7 +149,7 @@ const template = {
             </div>
             <div class="divider"></div>
             <a href="settings.html" class="profile-avatar">
-                <img src="public/image/avatar.png" class="img-circle" alt="profile picture">
+                <img src="image/avatar.png" class="img-circle" alt="profile picture">
                 <span id="user-detail">Onwuzor Victor</span>
             </a>
             <div class="divider"></div>

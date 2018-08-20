@@ -46,5 +46,35 @@ class Api {
         })
         .then((res) => res.json());
     }
+
+    getOneDiaryById(id) {
+        return fetch(`${this.API_URL}/entries/${id}`, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': `Bearer ${this.token}`,
+            }
+        })
+        .then((res) => res.json());
+    }
+
+    create(title, body) {
+        return fetch(`${this.API_URL}/entries`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': `Bearer ${this.token}`,
+            },
+            body: JSON.stringify({
+                title,
+                body
+            })
+        })
+        .then((res) => res.json()); 
+    }
+
+
     
 }
