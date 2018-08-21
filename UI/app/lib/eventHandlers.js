@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', function() {
     let moreInfo = document.querySelectorAll('#more-info');
     let moreContent = document.querySelector('#more-content');
     let moreInformation = document.querySelector('#more-information');
+    const logOut = document.getElementById('logout');
 
     function closeSideMenu() {
         sideMenu.style.cssText = "";
@@ -25,6 +26,11 @@ window.addEventListener('DOMContentLoaded', function() {
         moreContent.classList.toggle('clicked');
     }
 
+    function logOutApp() {
+        window.localStorage.clear();
+        window.location.replace('#/');
+    }
+
     if (close) {
         close.addEventListener('click', closeSideMenu, false);
     }
@@ -35,6 +41,10 @@ window.addEventListener('DOMContentLoaded', function() {
     
     if (moreInformation) {
         moreInformation.addEventListener('click', display, false);  
+    }
+
+    if (logOut) {
+        logOut.addEventListener('click', logOutApp, false);
     }
     
     moreInfo.forEach(panel => panel.addEventListener('click', toggleOpen, false));

@@ -131,10 +131,10 @@ const template = {
         </div>
         <!-- NAVIGATION -->
         <nav class="navbar-grid-equal">
-            <a href="index.html">
+            <span id="logout" class="pointer">
                 <i class="fa fa-sign-out-alt fa-lg"></i>
                 Logout
-            </a> 
+            </sapn> 
         </nav>
     `,
 
