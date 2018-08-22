@@ -83,7 +83,7 @@ const template = {
                         <div class="view-more">
                             <a href="#/diary/${diary.id}">View</a>
                             <a href="edit.html">Edit</a>
-                            <a href="#">Delete</a>
+                            <a href="#/delete/${diary.id}">Delete</a>
                         </div>
                         <i class="fa fa-ellipsis-v" id="more-info"></i>
                     </div>
@@ -107,7 +107,7 @@ const template = {
                 <small class="card-date">Created ${diary.created_at}</small>
                 <div class="view-single">
                     <a href="edit.html">Edit</a>
-                    <a href="#">Delete</a>
+                    <a href="#/delete/${diary.id}">Delete</a>
                 </div>  
                 <i class="fa fa-ellipsis-v" id="more-information"></i>
             </div>
@@ -148,12 +148,12 @@ const template = {
                 </span>
             </div>
             <div class="divider"></div>
-            <a href="settings.html" class="profile-avatar">
+            <a href="#/settings" class="profile-avatar">
                 <img src="image/avatar.png" class="img-circle" alt="profile picture">
                 <span id="user-detail">Onwuzor Victor</span>
             </a>
             <div class="divider"></div>
-            <a href="new.html">
+            <a href="#/new">
                 <i class="fa fa-plus fa-lg"></i>
                 Create New Diary
             </a>
@@ -162,12 +162,12 @@ const template = {
                 All Diaries
             </a>
             <div class="divider"></div>
-            <a href="notification.html">
+            <a href="#/notification">
                 <i class="fa fa-bell fa-lg"></i>
                 <span class="notify-count notify-available">9</span>
                 Notifications
             </a>
-            <a href="settings.html">
+            <a href="#/settings">
                 <i class="fa fa-cog fa-lg"></i>
                 Settings
             </a> 
@@ -195,6 +195,73 @@ const template = {
             <button type="submit" id="button" class="btn btn-info">Save</button>
             <p id="loader" class="text-center spinner">Creating...</p>
         </form>
+    `,
+
+    editDiaryForm: (diary) => `
+        <form id="updateDiaryForm" class="form form-md">
+            <div id="error-message" class="text-center error"></div>
+            <input type="text" id="id" value="${diary.id}" hidden>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Title" value="${diary.title}">
+            </div>
+            <div class="form-group">
+                <label for="body">Dear Diary</label>
+                <textarea rows="5" id="body">${diary.body}</textarea>
+            </div>
+            
+            <button type="submit" id="button" class="btn btn-info">Save Update</button>
+            <p id="loader" class="text-center spinner">Creating...</p>
+        </form>
+    `,
+
+    notificationTemplate: (notify) => `
+        <div>
+            <small class="card-date">${notify.created_at}</small>
+            <p>${notify.message}</p>
+        </div>
+        <div class="divider"></div>
+    `,
+
+    noNotificationTemplate: `
+        <div>
+            <h3 class="text-center">You have no notification</h3>
+        </div>
+    `,
+
+    settingTemplate: `
+        <div>
+            <h4>Diary</h4>
+            <div class="divider"></div>
+            <div class="list">
+                <p><strong>Total Number of User Diary</strong></p>
+                <p><strong class="entry-count">6</strong></p>
+            </div>
+            <h4>General Settings</h4>
+            <div class="divider"></div>
+            <div class="list">
+                <p>Set Reminder</p>
+                <input type="checkbox" name="reminder" id="reminder">
+            </div>
+            <h4>User Profile</h4>
+            <div class="divider"></div>
+            <div class="list">
+                <p>First Name</p>
+                <p>Victor</p>
+            </div>
+            <div class="list">
+                <p>Last Name</p>
+                <p>Onwuzor</p>
+            </div>
+            <div class="list">
+                <p>Username</p>
+                <p>-----</p>
+            </div>
+            <div class="list">
+                <p>Email Address</p>
+                <p>onwuzorvictor@outlook.com</p>
+            </div>
+        </div>
     `,
 
     footerTemplate: `

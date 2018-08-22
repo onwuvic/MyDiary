@@ -9,3 +9,6 @@ router.addRouter('signup', '^/signup$');
 router.addRouter('diaries', '^/diary$');
 router.addRouter('diary', '^/diary/(.*)$');
 router.addRouter('newDiary', '^/new$');
+router.addRouter('edit', '^/edit/(.*)$');
+router.addRouter('notification', '^/notification$');
+router.addRouter('settings', '^/settings$');
