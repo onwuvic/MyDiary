@@ -23,14 +23,6 @@ class App {
         }
     }
 
-    showComponent(componentName) {
-        this.currentComponent = this.components[componentName];
-        this.updateView();
-        if(this.currentComponent && this.currentComponent.controller) {
-            this.currentComponent.controller();
-        }
-    }
-
     updateView() {
         this.appElement.innerHTML = this.getView(); 
     }
@@ -40,6 +32,14 @@ class App {
             return this.currentComponent.view();
         } else {
             return '<h2 class="text-center"> Not Found</h2>';
+        }
+    }
+
+    showComponent(componentName) {
+        this.currentComponent = this.components[componentName];
+        this.updateView();
+        if(this.currentComponent && this.currentComponent.controller) {
+            this.currentComponent.controller();
         }
     }
 
