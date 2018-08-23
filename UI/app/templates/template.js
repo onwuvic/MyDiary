@@ -211,7 +211,7 @@ const template = {
             </div>
             
             <button type="submit" id="button" class="btn btn-info">Save Update</button>
-            <p id="loader" class="text-center spinner">Creating...</p>
+            <p id="loader" class="text-center spinner">Updating...</p>
         </form>
     `,
 
