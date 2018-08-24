@@ -97,6 +97,18 @@ class Api {
         .then((res) => res.json());
     }
 
+    getOneDiaryByIdAndDelete(id) {
+        return fetch(`${this.API_URL}/entries/${id}`, {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': `Bearer ${this.token}`,
+            }
+        })
+        .then((res) => res.json());
+    }
+
 
     
 }
