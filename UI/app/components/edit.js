@@ -3,11 +3,7 @@
         name: 'edit',
         model: {
             loading: true,
-            diary: {
-                // id: 1,
-                // title: 'love is pain',
-                // body: 'bsbk duhuidhys shyufoi sfyusfy sfhusf siufyhouifs sfysfu'
-            }
+            diary: {}
         },
         view,
         controller

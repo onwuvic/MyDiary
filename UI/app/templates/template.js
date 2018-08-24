@@ -82,7 +82,7 @@ const template = {
                         <small class="card-date">Created ${diary.created_at}</small>
                         <div class="view-more">
                             <a href="#/diary/${diary.id}">View</a>
-                            <a href="edit.html">Edit</a>
+                            <a href="#/edit/${diary.id}">Edit</a>
                             <a href="#/delete/${diary.id}">Delete</a>
                         </div>
                         <i class="fa fa-ellipsis-v" id="more-info"></i>
@@ -106,7 +106,7 @@ const template = {
             <div class="card-single" id="more-content">
                 <small class="card-date">Created ${diary.created_at}</small>
                 <div class="view-single">
-                    <a href="edit.html">Edit</a>
+                    <a href="#/edit/${diary.id}">Edit</a>
                     <a href="#/delete/${diary.id}">Delete</a>
                 </div>  
                 <i class="fa fa-ellipsis-v" id="more-information"></i>
