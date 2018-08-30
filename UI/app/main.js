@@ -1,7 +1,8 @@
 /**
- *  This Vanilla JS MVC Pattern was gotten from https://www.youtube.com/watch?v=ZBilSF7Oi1k&t=1s
+ *  @credits for this Vanilla JS MVC Pattern goes to https://www.youtube.com/watch?v=ZBilSF7Oi1k&t=1s
  */
-const app = new App();
+const jwt = new JwtHelper();
+const app = new App(jwt);
 const api = new Api();
 
 app.mount('#app');

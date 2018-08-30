@@ -1,7 +1,13 @@
 class App {
-    constructor() {
+    constructor(jwt) {
+        this.jwt = jwt;
         this.components = {};
         this.currentComponent = null;
+        this.appToken = '';
+    }
+
+    get token() {
+        return this.appToken = window.localStorage.getItem("token");
     }
 
     mount(selector) {
@@ -30,7 +36,8 @@ class App {
 
     getView() {
         if(this.currentComponent) {
-            return this.currentComponent.view();
+            let user = this.jwt.decodeToken(this.token);
+            return this.currentComponent.view(user);
         } else {
             return '<h2 class="text-center"> Not Found</h2>';
         }
