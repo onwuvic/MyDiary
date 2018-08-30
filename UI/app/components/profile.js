@@ -1,6 +1,6 @@
 (function () {
     app.addComponent({
-      name: 'settings',
+      name: 'profile',
       model: {
         users: []
       },
@@ -18,7 +18,7 @@
                 </div>
             </header>
             <section id="main" class="container-sm single-page">
-                ${template.settingTemplate}
+                ${template.profileTemplate(user)}
             </section>
             ${template.footerTemplate}
         `;

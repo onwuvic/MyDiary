@@ -148,7 +148,7 @@ const template = {
                 </span>
             </div>
             <div class="divider"></div>
-            <a href="#/settings" class="profile-avatar">
+            <a href="#/profile" class="profile-avatar">
                 <img src="image/avatar.png" class="img-circle" alt="profile picture">
                 <span id="user-detail"><strong>${user.lastname} ${user.firstname}</strong></span>
             </a>
@@ -229,19 +229,13 @@ const template = {
         </div>
     `,
 
-    settingTemplate: (user) => `
+    profileTemplate: (user) => `
         <div>
             <h4>Diary</h4>
             <div class="divider"></div>
             <div class="list">
                 <p><strong>Total Number of User Diary</strong></p>
                 <p><strong class="entry-count">6</strong></p>
-            </div>
-            <h4>General Settings</h4>
-            <div class="divider"></div>
-            <div class="list">
-                <p>Set Reminder</p>
-                <input type="checkbox" name="reminder" id="reminder">
             </div>
             <h4>User Profile</h4>
             <div class="divider"></div>
@@ -261,6 +255,20 @@ const template = {
                 <p>Email Address</p>
                 <p>${user.email}</p>
             </div>
+        </div>
+    `,
+
+    settingTemplate: `
+        <div>
+            <h4>General Settings</h4>
+            <div class="divider"></div>
+            <form>
+                <div class="form-group form-horizontal">
+                    <label for="reminder">Set Reminder</label>
+                    <input type="checkbox" id="reminder">
+                </div>
+                <button type="submit" id="button" class="btn btn-info">Set Reminder</button>
+            </form>
         </div>
     `,
 

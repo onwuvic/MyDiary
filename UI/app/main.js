@@ -16,4 +16,5 @@ router.addRouter('newDiary', '^/new$');
 router.addRouter('edit', '^/edit/(.*)$');
 router.addRouter('delete', '^/delete/(.*)$');
 router.addRouter('notification', '^/notification$');
+router.addRouter('profile', '^/profile$');
 router.addRouter('settings', '^/settings$');
