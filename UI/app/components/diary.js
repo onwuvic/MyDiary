@@ -9,14 +9,14 @@
         controller
     });
 
-    function view() {
+    function view(user) {
         if(this.loading) return 'Loading...';
 
         return `
             <header>
                 <div class="container container-fluid navbar-grid">
                     ${template.navBarTemplate}
-                    ${template.sideNavBarTemplate}
+                    ${template.sideNavBarTemplate(user)}
                 </div>
             </header>
             <section id="main" class="container-sm single-page">

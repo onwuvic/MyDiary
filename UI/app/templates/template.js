@@ -138,7 +138,7 @@ const template = {
         </nav>
     `,
 
-    sideNavBarTemplate: `
+    sideNavBarTemplate: (user) => `
         <!-- SIDE-BAR MENU -->
         <nav class="side-navbar" id="side-menu">
             <div class="navbar-brand navbar-grid-menu">
@@ -150,7 +150,7 @@ const template = {
             <div class="divider"></div>
             <a href="#/settings" class="profile-avatar">
                 <img src="image/avatar.png" class="img-circle" alt="profile picture">
-                <span id="user-detail">Onwuzor Victor</span>
+                <span id="user-detail"><strong>${user.lastname} ${user.firstname}</strong></span>
             </a>
             <div class="divider"></div>
             <a href="#/new">
@@ -229,7 +229,7 @@ const template = {
         </div>
     `,
 
-    settingTemplate: `
+    settingTemplate: (user) => `
         <div>
             <h4>Diary</h4>
             <div class="divider"></div>
@@ -247,11 +247,11 @@ const template = {
             <div class="divider"></div>
             <div class="list">
                 <p>First Name</p>
-                <p>Victor</p>
+                <p>${user.firstname}</p>
             </div>
             <div class="list">
                 <p>Last Name</p>
-                <p>Onwuzor</p>
+                <p>${user.lastname}</p>
             </div>
             <div class="list">
                 <p>Username</p>
@@ -259,7 +259,7 @@ const template = {
             </div>
             <div class="list">
                 <p>Email Address</p>
-                <p>onwuzorvictor@outlook.com</p>
+                <p>${user.email}</p>
             </div>
         </div>
     `,

@@ -9,7 +9,7 @@
       controller
     });
   
-    function view() {
+    function view(user) {
       if(this.loading) return 'Loading...';
   
       let diaries = this.diaries.reduce((html, diary) => html + template.diaryTemplate(diary), '');
@@ -22,7 +22,7 @@
         <header>
             <div class="container container-fluid navbar-grid">
                 ${template.navBarTemplate}
-                ${template.sideNavBarTemplate}
+                ${template.sideNavBarTemplate(user)}
             </div>
         </header>
         <section id="main" class="container grid-layout">

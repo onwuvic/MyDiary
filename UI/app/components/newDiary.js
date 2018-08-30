@@ -8,12 +8,12 @@
         controller
     });
 
-    function view() {
+    function view(user) {
         return `
             <header>
                 <div class="container container-fluid navbar-grid">
                     ${template.navBarTemplate}
-                    ${template.sideNavBarTemplate}
+                    ${template.sideNavBarTemplate(user)}
                 </div>
             </header>
             <section id="main" class="container">
