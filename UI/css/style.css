@@ -500,6 +500,12 @@ select {
     margin: 5px 0px;
 }
 
+.form-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .form > h3 {
     margin-bottom: 10px;
 }
